@@ -1,8 +1,16 @@
 <body>
-	<nav class="relative px-4 py-4 flex justify-between items-center bg-[#FCFCFC]">
-		<a class="font-bold leading-none" href="#">
-			<img src="asset/img/AlloSimplonTR.png" class="w-20">
+	<nav class="relative px-3 py-2 md:px-4 md:py-3 flex items-center bg-[#FCFCFC]">
+		<a class="font-bold leading-none" href="index.php">
+			<img src="asset/img/AlloSimplonTR.png" class="md:w-20">
 		</a>
+		<form class="px-3 md:px-28 md:pl-44">
+			<div class="relative">
+				<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+					<svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+				</div>
+				<input class="p-1 w-40 pr-8 md:w-96 md:p-2 md:pr-10 text-sm text-gray-900 border border-gray-300 rounded bg-gray-50" required>
+			</div>
+		</form>
 		<div class="lg:hidden">
 			<button class="navbar-burger flex items-center text-black p-3">
 				<svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -10,9 +18,24 @@
 				</svg>
 			</button>
 		</div>
-		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+		<ul class="hidden lg:flex lg:items-center lg:w-auto lg:space-x-6 pl-10 pr-20">
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Accueil</a></li>
-			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Films</a></li>
+			<li>
+				<div class="group inline">
+					<a class="text-sm text-black hover:text-[#694AA6]" href="#">Films ▼</a>
+					<ul class="absolute hidden text-gray-700 pt-1 group-hover:block shadow">
+						<li class="">
+							<a class="bg-[#694AA6] text-[#FCFCFC] py-2 px-5 block">Catégories</a>
+						</li>
+						<li class="">
+							<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="#">Action</a>
+						</li>
+						<li class="">
+							<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="#">Aventure</a>
+						</li>
+					</ul>
+      			</div>
+			</li>
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Contact</a></li>
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Inscription</a></li>
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Connexion</a></li>
@@ -28,6 +51,22 @@
 					</li>
 					<li class="">
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="#">Films</a>
+					</li>
+					<li>
+						<div class="group inline">
+							<a class="block border-b py-4 px-2 text-sm text-[#FCFCFC]">▼ Films</a>
+							<ul class="absolute hidden text-gray-700 group-hover:block shadow right-0 pr-10">
+								<li class="">
+									<a class="bg-[#694AA6] text-[#FCFCFC] py-2 px-5 block">Catégories</a>
+								</li>
+								<li class="">
+									<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="#">Action</a>
+								</li>
+								<li class="">
+									<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="#">Aventure</a>
+								</li>
+							</ul>
+						</div>
 					</li>
 					<li class="">
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="#">Contact</a>
