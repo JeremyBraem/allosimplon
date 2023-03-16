@@ -54,25 +54,25 @@
     <section>
         <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">à la une</h2>
         <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-10 md:mt-20 md:gap-x-6 gap-x-3 px-10 md:px-20">
-            <div class="bg-[#8666C6] rounded overflow-hidden mb-4 h-48 md:h-96">
+            <div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-44 md:h-96">
                 <a href="#">
                     <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
                     <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
                 </a>
             </div>
-            <div class="bg-[#8666C6] rounded overflow-hidden mb-4 h-48 md:h-96">
+            <div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-44 md:h-96">
                 <a href="#">
                     <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
                     <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
                 </a>
             </div>
-            <div class="bg-[#8666C6] rounded overflow-hidden mb-4 h-48 md:h-96">
+            <div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-44 md:h-96">
                 <a href="#">
                     <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
                     <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
                 </a>
             </div>
-            <div class="bg-[#8666C6] rounded overflow-hidden mb-4 h-48 md:h-96">
+            <div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-44 md:h-96">
                 <a href="#">
                     <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
                     <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
@@ -82,20 +82,52 @@
     </section>
     <section>
         <h2 class="bg-[#FCFCFC] text-center uppercase bold text-[#8666C6] text-2xl font-semibold py-10 md:py-20">TOP 10</h2>
-        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 md:gap-x-6 gap-x-3 px-10 md:px-20">
-            <div class="bg-[#8666C6] rounded overflow-hidden mb-4 h-48 md:h-96">
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 md:gap-x-6 gap-x-3 px-10 md:px-20 pb-10">
+            <div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-44 md:h-96">
                 <a href="#">
                     <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
+                    <img src="asset/img/affiche-film-joker.jpg">
                 </a>
             </div>
-            <div class="bg-[#8666C6] rounded overflow-hidden mb-4 h-48 md:h-96">
+            <div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-44 md:h-96">
                 <a href="#">
                     <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
+                    <img src="asset/img/affiche-film-joker.jpg">
                 </a>
             </div>
         </div>
     </section>
+    <section class="bg-[#8666C6]">
+        <h2 class=" text-center uppercase text-white text-2xl p-9">Catégories</h2>
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-10 md:gap-x-6 gap-x-3 px-10 md:px-20 pb-10">
+            <div class="bg-[#FCFCFC] rounded-sm overflow-hidden mb-4 h-28 md:h-60 md:w-68">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
+            </div>
+            <div class="bg-[#FCFCFC] rounded-sm overflow-hidden mb-4 h-28 md:h-60 md:w-68">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
+            </div>
+            <div class="bg-[#FCFCFC] rounded-sm overflow-hidden mb-4 h-28 md:h-60 md:w-68">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
+            </div>
+            <div class="bg-[#FCFCFC] rounded-sm overflow-hidden mb-4 h-28 md:h-60 md:w-68">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
+            </div>
+        </div>
+    </section>
+    <?php
+        include ('content/footer.php');
+    ?>
 </body>
 </html>
