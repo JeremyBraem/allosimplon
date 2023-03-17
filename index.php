@@ -54,79 +54,158 @@
     <section>
         <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">à la une</h2>
         <div class="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-10 md:mt-20 md:gap-x-6 gap-x-3 px-10 md:px-20">
-            <div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-44 md:h-96">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
-                </a>
+            <div class="mb-4">
+                <div class="bg-[#8666C6] rounded-sm overflow-hidden  h-44 md:h-96">
+                    <a href="#">
+                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                        <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
+                    </a>
+                </div>
+                <div class="flex place-content-around pt-1">
+                    <p>De : Todd Phillips</p>
+                    <img src="asset/img/unlike.png" class=" w-6">
+                </div>
             </div>
-            <div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-44 md:h-96">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
-                </a>
+            <div class="mb-4">
+                <div class="bg-[#8666C6] rounded-sm overflow-hidden  h-44 md:h-96">
+                    <a href="#">
+                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                        <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
+                    </a>
+                </div>
+                <div class="flex place-content-around pt-1">
+                    <p>De : Todd Phillips</p>
+                    <img src="asset/img/unlike.png" class=" w-6">
+                </div>
             </div>
-            <div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-44 md:h-96">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
-                </a>
+            <div class="mb-4">
+                <div class="bg-[#8666C6] rounded-sm overflow-hidden  h-44 md:h-96">
+                    <a href="#">
+                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                        <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
+                    </a>
+                </div>
+                <div class="flex place-content-around pt-1">
+                    <p>De : Todd Phillips</p>
+                    <img src="asset/img/unlike.png" class=" w-6">
+                </div>
             </div>
-            <div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-44 md:h-96">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
-                </a>
+            <div class="mb-4">
+                <div class="bg-[#8666C6] rounded-sm overflow-hidden  h-44 md:h-96">
+                    <a href="#">
+                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                        <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
+                    </a>
+                </div>
+                <div class="flex place-content-around pt-1">
+                    <p>De : Todd Phillips</p>
+                    <img src="asset/img/unlike.png" class=" w-6">
+                </div>
             </div>
         </div>
     </section>
     <section>
         <h2 class="bg-[#FCFCFC] text-center uppercase bold text-[#8666C6] text-2xl font-semibold py-10 md:py-20">TOP 10</h2>
-  <swiper-container class="mySwiper px-10 md:px-32" slides-per-view="2" space-between="30" navigation="true">
-    <swiper-slide><div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-48 md:h-full w-28 md:w-80">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg">
-                </a>
-            </div></swiper-slide>
-    <swiper-slide><div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-48 md:h-full w-28 md:w-80">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg">
-                </a>
-            </div></swiper-slide>
-    <swiper-slide><div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-48 md:h-full w-28 md:w-80">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg">
-                </a>
-            </div></swiper-slide>
-    <swiper-slide><div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-48 md:h-full w-28 md:w-80">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg">
-                </a>
-            </div></swiper-slide>
-            <swiper-slide><div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-48 md:h-full w-28 md:w-80">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg">
-                </a>
-            </div></swiper-slide>
-            <swiper-slide><div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-48 md:h-full w-28 md:w-80">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg">
-                </a>
-            </div></swiper-slide>
-            <swiper-slide><div class="bg-[#8666C6] rounded-sm overflow-hidden mb-4 h-48 md:h-full w-28 md:w-80">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                    <img src="asset/img/affiche-film-joker.jpg">
-                </a>
-            </div></swiper-slide>
-            
-    </swiper-container>
+        <swiper-container class="mySwiper px-10 md:px-32" slides-per-view="2" space-between="30" navigation="true">
+            <swiper-slide>
+                <div class="mb-4 h-48 md:h-full w-28 md:w-80">
+                    <div class="bg-[#8666C6] rounded-sm overflow-hidden ">
+                        <a href="#">
+                            <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                            <img src="asset/img/affiche-film-joker.jpg">
+                        </a>
+                    </div>
+                    <div class="flex place-content-around pt-1">
+                        <p>De : Todd Phillips</p>
+                        <img src="asset/img/unlike.png" class=" w-6">
+                    </div>
+                </div>
+            </swiper-slide>
+            <swiper-slide>
+                <div class="mb-4 h-48 md:h-full w-28 md:w-80">
+                    <div class="bg-[#8666C6] rounded-sm overflow-hidden ">
+                        <a href="#">
+                            <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                            <img src="asset/img/affiche-film-joker.jpg">
+                        </a>
+                    </div>
+                    <div class="flex place-content-around pt-1">
+                        <p>De : Todd Phillips</p>
+                        <img src="asset/img/unlike.png" class=" w-6">
+                    </div>
+                </div>
+            </swiper-slide>
+            <swiper-slide>
+                <div class="mb-4 h-48 md:h-full w-28 md:w-80">
+                    <div class="bg-[#8666C6] rounded-sm overflow-hidden ">
+                        <a href="#">
+                            <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                            <img src="asset/img/affiche-film-joker.jpg">
+                        </a>
+                    </div>
+                    <div class="flex place-content-around pt-1">
+                        <p>De : Todd Phillips</p>
+                        <img src="asset/img/unlike.png" class=" w-6">
+                    </div>
+                </div>
+            </swiper-slide>
+            <swiper-slide>
+                <div class="mb-4 h-48 md:h-full w-28 md:w-80">
+                    <div class="bg-[#8666C6] rounded-sm overflow-hidden ">
+                        <a href="#">
+                            <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                            <img src="asset/img/affiche-film-joker.jpg">
+                        </a>
+                    </div>
+                    <div class="flex place-content-around pt-1">
+                        <p>De : Todd Phillips</p>
+                        <img src="asset/img/unlike.png" class=" w-6">
+                    </div>
+                </div>
+            </swiper-slide>
+            <swiper-slide>
+                <div class="mb-4 h-48 md:h-full w-28 md:w-80">
+                    <div class="bg-[#8666C6] rounded-sm overflow-hidden ">
+                        <a href="#">
+                            <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                            <img src="asset/img/affiche-film-joker.jpg">
+                        </a>
+                    </div>
+                    <div class="flex place-content-around pt-1">
+                        <p>De : Todd Phillips</p>
+                        <img src="asset/img/unlike.png" class=" w-6">
+                    </div>
+                </div>
+            </swiper-slide>
+            <swiper-slide>
+                <div class="mb-4 h-48 md:h-full w-28 md:w-80">
+                    <div class="bg-[#8666C6] rounded-sm overflow-hidden ">
+                        <a href="#">
+                            <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                            <img src="asset/img/affiche-film-joker.jpg">
+                        </a>
+                    </div>
+                    <div class="flex place-content-around pt-1">
+                        <p>De : Todd Phillips</p>
+                        <img src="asset/img/unlike.png" class=" w-6">
+                    </div>
+                </div>
+            </swiper-slide>
+            <swiper-slide>
+                <div class="mb-4 h-48 md:h-full w-28 md:w-80">
+                    <div class="bg-[#8666C6] rounded-sm overflow-hidden ">
+                        <a href="#">
+                            <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
+                            <img src="asset/img/affiche-film-joker.jpg">
+                        </a>
+                    </div>
+                    <div class="flex place-content-around pt-1">
+                        <p>De : Todd Phillips</p>
+                        <img src="asset/img/unlike.png" class=" w-6">
+                    </div>
+                </div>  
+            </swiper-slide>
+        </swiper-container>
     </section>
     <section class="bg-[#8666C6]">
         <h2 class=" text-center uppercase text-white text-2xl p-9">Catégories</h2>
