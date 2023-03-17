@@ -22,7 +22,7 @@
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Accueil</a></li>
 			<li>
 				<div class="group inline">
-					<a class="text-sm text-black hover:text-[#694AA6]" href="#">Films ▼</a>
+					<a class="text-sm text-black hover:text-[#694AA6]" href="page-film.php">Films ▼</a>
 					<ul class="absolute hidden text-gray-700 pt-1 group-hover:block shadow">
 						<li class="">
 							<a class="bg-[#694AA6] text-[#FCFCFC] py-2 px-5 block">Catégories</a>
@@ -50,14 +50,14 @@
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="#">Accueil</a>
 					</li>
 					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="#">Films</a>
+						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="page-film.php">Films</a>
 					</li>
 					<li>
 						<div class="group inline">
-							<a class="block border-b py-4 px-2 text-sm text-[#FCFCFC]">▼ Films</a>
+							<a class="block border-b py-4 px-2 text-sm text-[#FCFCFC]">▼ Catégories</a>
 							<ul class="absolute hidden text-gray-700 group-hover:block shadow right-0 pr-10">
 								<li class="">
-									<a class="bg-[#694AA6] text-[#FCFCFC] py-2 px-5 block">Catégories</a>
+									<a class="bg-[#694AA6] text-[#FCFCFC] py-2 px-5 block">Genre</a>
 								</li>
 								<li class="">
 									<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="#">Action</a>

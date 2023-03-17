@@ -48,7 +48,7 @@
                 </div>
                 <div class="flex place-content-around pt-1">
                     <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class=" w-6">
+                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
                 </div>
             </div>
             
@@ -61,7 +61,7 @@
                 </div>
                 <div class="flex place-content-around pt-1">
                     <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class=" w-6">
+                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
                 </div>
             </div>
             <div class="mb-4">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="flex place-content-around pt-1">
                     <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class=" w-6">
+                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
                 </div>
             </div>
             <div class="mb-4">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="flex place-content-around pt-1">
                     <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class=" w-6">
+                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
                 </div>
             </div>
             <div class="mb-4">
@@ -97,7 +97,7 @@
                 </div>
                 <div class="flex place-content-around pt-1">
                     <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class=" w-6">
+                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
                 </div>
             </div>
             <div class="mb-4">
@@ -109,7 +109,7 @@
                 </div>
                 <div class="flex place-content-around pt-1">
                     <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class=" w-6">
+                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
                 </div>
             </div>
             <div class="mb-4">
@@ -121,7 +121,7 @@
                 </div>
                 <div class="flex place-content-around pt-1">
                     <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class=" w-6">
+                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
                 </div>
             </div>
             <div class="mb-4">
@@ -133,7 +133,7 @@
                 </div>
                 <div class="flex place-content-around pt-1">
                     <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class=" w-6">
+                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
                 </div>
             </div>
         </div>
