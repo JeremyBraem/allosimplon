@@ -1,9 +1,9 @@
 <body>
-	<nav class="relative px-3 py-2 md:px-4 md:py-3 flex items-center bg-[#FCFCFC]">
+	<nav class="z-50 relative px-3 py-2 md:px-4 md:py-3 flex items-center bg-[#FCFCFC]">
 		<a class="font-bold leading-none" href="index.php">
 			<img src="asset/img/AlloSimplonTR.png" class="md:w-20">
 		</a>
-		<form class="px-3 md:px-28 md:pl-44">
+		<form class="px-3 md:px-20 md:pl-40 lg:px-28 lg:pr-44">
 			<div class="relative">
 				<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
 					<svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -18,7 +18,7 @@
 				</svg>
 			</button>
 		</div>
-		<ul class="hidden lg:flex lg:items-center lg:w-auto lg:space-x-6 pl-10 pr-20">
+		<ul class="hidden lg:flex lg:items-center lg:w-auto lg:space-x-6 md:pr-20">
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Accueil</a></li>
 			<li>
 				<div class="group inline">
