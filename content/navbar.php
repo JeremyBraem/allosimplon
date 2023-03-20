@@ -36,7 +36,7 @@
 					</ul>
       			</div>
 			</li>
-			<li><a class="text-sm text-black hover:text-[#694AA6]" href="">Contact</a></li>
+			<li><a class="text-sm text-black hover:text-[#694AA6]" href="contact.php">Contact</a></li>
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="inscription.php">Inscription</a></li>
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="connexion.php">Connexion</a></li>
 		</ul>
@@ -69,7 +69,7 @@
 						</div>
 					</li>
 					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="">Contact</a>
+						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="contact.php">Contact</a>
 					</li>
 					<li class="">
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="connexion.php">Connexion</a>

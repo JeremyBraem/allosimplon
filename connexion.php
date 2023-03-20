@@ -22,14 +22,14 @@
     ?>
     <section>
         <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Inscription</h2>
-        <div class=" lg:w-2/4 m-auto flex flex-col p-10">
+        <form class=" lg:w-2/4 m-auto flex flex-col p-10">
             <label class="mb-2 text-xl">E-mail :</label>
-            <input class="border border-black" type="email" name="email" required>
+            <input class="border border-black p-1 bg-white rounded" type="email" name="email" required>
             <label class="mb-2 mt-7 text-xl">Mot de passe :</label>
-            <input class="border border-black" type="password" name="password" required>
+            <input class="border border-black p-1 bg-white rounded" type="password" name="password" required>
             <a href="#">Mot de passe oublié ?</a>
             <button class="place-self-center mt-8 bg-[#8666C6] text-[#FCFCFC] px-10 py-3 text-xl rounded">Se connecter</button>
-        </div>
+        </form>
     </section>
 
 
