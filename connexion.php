@@ -21,7 +21,7 @@
         include ('content/navbar.php');
     ?>
     <section>
-        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Inscription</h2>
+        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Connexion</h2>
         <form class=" lg:w-2/4 m-auto flex flex-col p-10">
             <label class="mb-2 text-xl">E-mail :</label>
             <input class="border border-black p-1 bg-white rounded" type="email" name="email" required>

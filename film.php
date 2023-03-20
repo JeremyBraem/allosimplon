@@ -37,11 +37,11 @@
                     <button class="place-self-center bg-[#8666C6] text-[#FCFCFC] px-5 py-3 rounded">Lien vers la platform</button>
                 </div>
             </div>
-            <div class="p-7 md:w-96 md:w-2/3 md:m-auto mb-5 md:pb-10">
+            <div class="p-7 md:w-96 md:w-3/4 md:m-auto mb-5 md:pb-10">
                 <p class="font-bold mb-4">Synopsis :</p>
                 <p>En 1981, Arthur Fleck travaille dans une agence de clowns à Gotham City. Méprisé et incompris par ceux qui lui font face, il mène une morne vie en marge de la société et habite dans un immeuble miteux avec sa mère Penny. Un soir, il se fait agresser dans le métro par trois traders de Wayne Enterprise alcoolisés qui le brutalisent, le poussant à les tuer en retour. Son geste inspire à une partie de la population l'idée de s'en prendre eux aussi aux puissants. Dans cette société décadente, Arthur bascule peu à peu dans la folie et finit par devenir le Joker, un dangereux tueur psychopathe victime d'hallucinations et le plus grand criminel de Gotham City.</p>
             </div>
-            <div class="flex justify-center px-5 md:px-0">
+            <div class="flex justify-center px-5 md:px-0 mb-10">
             <iframe class="md:w-full md:h-96" src="https://www.youtube.com/embed/_LUWnjT3iks" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         </div>
