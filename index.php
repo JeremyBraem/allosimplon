@@ -259,7 +259,7 @@
             </button>
         </div>
     </section>
-    <section class="bg-[#8666C6] ">
+    <!-- <section class="bg-[#8666C6] ">
         <h2 class="text-center uppercase text-white text-2xl p-9">Catégories</h2>
         <div class="swiper-container px-10 md:px-20 overflow-hidden">
             <div class="swiper-wrapper">
@@ -301,8 +301,7 @@
                 </div>
             </div>
         </div>
-    </section>
-    
+    </section> -->
     <?php
         include ('content/footer.php');
     ?>
