@@ -22,8 +22,7 @@
         include ('content/navbar.php');
     ?>
     <section class="">
-    <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Nom du film</h2>
-
+        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Nom du film</h2>
         <div class="md:bg-[#FCFCFC] md:w-4/5 md:m-auto">
             <div class="flex flex-col md:flex-row p-5 md:p-10 md:justify-center md:m-auto md:w-2/3">
                 <div class="flex justify-center">
