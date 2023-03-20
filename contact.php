@@ -21,7 +21,7 @@
         include ('content/navbar.php');
     ?>
     <section>
-        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Inscription</h2>
+        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Contact</h2>
         <form class=" lg:w-2/4 m-auto flex flex-col p-10">
             <label class="mb-2 text-xl">E-mail :</label>
             <input class="border border-black p-1 bg-white rounded" type="email" name="email" required>
@@ -29,16 +29,28 @@
             <input class="border border-black p-1 bg-white rounded" type="name" name="name" required>
             <label class="mb-2 mt-7 text-xl">Prénom :</label>
             <input class="border border-black p-1 bg-white rounded" type="firstname" name="firstname" required>
-            <label class="mb-2 mt-7 text-xl">Mot de passe :</label>
-            <input class="border border-black p-1 bg-white rounded" type="password" name="password" required>
-            <label class="mb-2 mt-7 text-xl">Vérification du mot de passe :</label>
-            <input class="border border-black p-1 bg-white rounded" type="password" name="password" required>
-            <button class="place-self-center mt-8 bg-[#8666C6] text-[#FCFCFC] px-10 py-3 text-xl rounded">S'inscrire</button>
+            <label class="mb-2 mt-7 text-xl">Message :</label>
+            <input type="textarea" name="Message" class="p-1 bg-white rounded border border-black pb-24 md:pb-36 xl:pb-64">
+            <button class="place-self-center mt-8 bg-[#8666C6] text-[#FCFCFC] px-10 py-3 text-xl rounded">Envoyer</button>
         </form>
+        <div class="bg-[#8666C6] text-white p-9">
+            <div class="flex flex-col md:flex-row justify-center gap-10 md:place-content-around">
+                <div class="flex text-xl gap-5">
+                    <img class="h-10" src="asset/img/appel.png">
+                    <p class="md:m-auto">xx-xx-xx-xx-xx</p>
+                </div>
+                <div class="flex text-xl gap-5">
+                    <img class="h-10" src="asset/img/email.png">
+                    <p class="md:m-auto">email@email.com</p>
+                </div>
+                <div class="flex text-xl gap-5">
+                    <img class="h-10" src="asset/img/cartes-et-drapeaux.png">
+                    <p class="md:m-auto">Adresse</p>
+                </div>
+            </div>
+        </div>
+
     </section>
-
-
-
     <?php
         include ('content/footer.php');
     ?>
