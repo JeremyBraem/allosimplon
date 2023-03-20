@@ -21,28 +21,32 @@
     <?php
         include ('content/navbar.php');
     ?>
-    <section>
-        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Nom du film</h2>
-        <div class="flex flex-col md:flex-row p-5 md:p-10 justify-center">
-            <div class="flex justify-center">
-                <img src="asset/img/affiche-film-joker.jpg" class="w-48 md:w-80">
+    <section class="">
+    <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Nom du film</h2>
+
+        <div class="md:bg-[#FCFCFC] md:w-4/5 md:m-auto">
+            <div class="flex flex-col md:flex-row p-5 md:p-10 md:justify-center md:m-auto md:w-2/3">
+                <div class="flex justify-center">
+                    <img src="asset/img/affiche-film-joker.jpg" class="w-56 md:w-80">
+                </div>
+                <div class="px-10">
+                    <p class="md:text-base mb-2 mt-10">Nom du film</p>
+                    <p class="md:text-base mb-2">Auteur : Nom</p>
+                    <p class="md:text-base mb-2">Réalisateur : Nom</p>
+                    <p class="md:text-base mb-2">Sortie : Date</p>
+                    <p class="md:text-base mb-5">Genre : Genre</p>
+                    <button class="place-self-center bg-[#8666C6] text-[#FCFCFC] px-5 py-3 rounded">Lien vers la platform</button>
+                </div>
             </div>
-            <div class="pl-4">
-                <p class="md:text-base mb-2 mt-10">Nom du film</p>
-                <p class="md:text-base mb-2">Auteur : Nom</p>
-                <p class="md:text-base mb-2">Réalisateur : Nom</p>
-                <p class="md:text-base mb-2">Sortie : Date</p>
-                <p class="md:text-base mb-5">Genre : Genre</p>
+            <div class="p-7 md:w-96 md:w-2/3 md:m-auto mb-5 md:pb-10">
+                <p class="font-bold mb-4">Synopsis :</p>
+                <p>En 1981, Arthur Fleck travaille dans une agence de clowns à Gotham City. Méprisé et incompris par ceux qui lui font face, il mène une morne vie en marge de la société et habite dans un immeuble miteux avec sa mère Penny. Un soir, il se fait agresser dans le métro par trois traders de Wayne Enterprise alcoolisés qui le brutalisent, le poussant à les tuer en retour. Son geste inspire à une partie de la population l'idée de s'en prendre eux aussi aux puissants. Dans cette société décadente, Arthur bascule peu à peu dans la folie et finit par devenir le Joker, un dangereux tueur psychopathe victime d'hallucinations et le plus grand criminel de Gotham City.</p>
             </div>
-            <button class="place-self-center">Lien vers la platform</button>
-        </div>
-        <div class="p-5 md:w-96 md:w-2/3 md:m-auto">
-            <p class="font-bold">Synopsis :</p>
-            <p>En 1981, Arthur Fleck travaille dans une agence de clowns à Gotham City. Méprisé et incompris par ceux qui lui font face, il mène une morne vie en marge de la société et habite dans un immeuble miteux avec sa mère Penny. Un soir, il se fait agresser dans le métro par trois traders de Wayne Enterprise alcoolisés qui le brutalisent, le poussant à les tuer en retour. Son geste inspire à une partie de la population l'idée de s'en prendre eux aussi aux puissants. Dans cette société décadente, Arthur bascule peu à peu dans la folie et finit par devenir le Joker, un dangereux tueur psychopathe victime d'hallucinations et le plus grand criminel de Gotham City.</p>
-        </div>
-        <div class="flex justify-center mb-10 px-5 md:px-0">
+            <div class="flex justify-center px-5 md:px-0">
             <iframe class="md:w-full md:h-96" src="https://www.youtube.com/embed/_LUWnjT3iks" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
+        </div>
+        
     </section>
     <?php
         include ('content/footer.php');
