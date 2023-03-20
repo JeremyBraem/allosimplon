@@ -19,7 +19,7 @@
 			</button>
 		</div>
 		<ul class="hidden lg:flex lg:items-center lg:w-auto lg:space-x-6 md:pr-20">
-			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Accueil</a></li>
+			<li><a class="text-sm text-black hover:text-[#694AA6]" href="index.php">Accueil</a></li>
 			<li>
 				<div class="group inline">
 					<a class="text-sm text-black hover:text-[#694AA6]" href="page-film.php">Films ▼</a>
@@ -36,9 +36,9 @@
 					</ul>
       			</div>
 			</li>
-			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Contact</a></li>
-			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Inscription</a></li>
-			<li><a class="text-sm text-black hover:text-[#694AA6]" href="#">Connexion</a></li>
+			<li><a class="text-sm text-black hover:text-[#694AA6]" href="">Contact</a></li>
+			<li><a class="text-sm text-black hover:text-[#694AA6]" href="inscription.php">Inscription</a></li>
+			<li><a class="text-sm text-black hover:text-[#694AA6]" href="connexion.php">Connexion</a></li>
 		</ul>
 	</nav>
 	<div class="navbar-menu relative z-50 hidden">
@@ -47,7 +47,7 @@
 			<div>
 				<ul>
 					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="#">Accueil</a>
+						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="index.php">Accueil</a>
 					</li>
 					<li class="">
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="page-film.php">Films</a>
@@ -69,13 +69,13 @@
 						</div>
 					</li>
 					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="#">Contact</a>
+						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="">Contact</a>
 					</li>
 					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="#">Connexion</a>
+						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="connexion.php">Connexion</a>
 					</li>
 					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="#">Inscription</a>
+						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="inscription.php">Inscription</a>
 					</li>
 				</ul>
 			</div>
