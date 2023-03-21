@@ -12,8 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
     <title>AlloSimplon</title>
 </head>
 <body class="bg-[#FCFCFC]">
@@ -259,54 +258,83 @@
             </button>
         </div>
     </section>
-    <!-- <section class="bg-[#8666C6] ">
+    <section>
+        <img class="thumbnail" src="asset/img/parallax.png" alt="image">
+    </section>
+    <!-- <section class="bg-[#8666C6]">
         <h2 class="text-center uppercase text-white text-2xl p-9">Catégories</h2>
-        <div class="swiper-container px-10 md:px-20 overflow-hidden">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                    <a href="#">
-                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                        <img src="asset/img/action-genre.jpg">
-                    </a>
-                </div>
-                <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                    <a href="#">
-                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                        <img src="asset/img/action-genre.jpg">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                        <a href="#">
-                            <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                            <img src="asset/img/action-genre.jpg">
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                        <a href="#">
-                            <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                            <img src="asset/img/action-genre.jpg">
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                        <a href="#">
-                            <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                            <img src="asset/img/action-genre.jpg">
-                        </a>
-                    </div>
-                </div>
+        <swiper-container>
+            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
             </div>
-        </div>
-    </section> -->
+            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
+            </div>
+            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
+            </div>
+            <div class=" bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
+            </div>
+            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
+            </div>
+            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
+            </div>
+            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
+                <a href="#">
+                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
+                    <img src="asset/img/action-genre.jpg">
+                </a>
+            </div>
+        </swiper-container>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+    <script>
+        const swiperEl = document.querySelector('swiper-container')
+        Object.assign(swiperEl, {
+        slidesPerView: 3,
+        centeredSlides: true,
+        spaceBetween: 30,
+        navigation: true,
+        virtual: {
+            slides: (function () {
+            const slides = [];
+            for (var i = 0; i < 600; i += 1) {
+                slides.push('Slide ' + (i + 1));
+            }
+            return slides;
+            })(),
+        },
+        });
+
+        swiperEl.initialize();
+
+        const swiper = swiperEl.swiper;
+    </script> -->
     <?php
         include ('content/footer.php');
     ?>
     <script src="asset/js/swiper.js"></script>
-    <script src="asset/js/swiper2.js"></script>
-
+    <script src="asset/js/parallax.js"></script>
 </body>
 </html>

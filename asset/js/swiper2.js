@@ -1,19 +1,21 @@
-// JavaScript
-// Initialize swiper
-const swiper = new Swiper('.swiper-container', {
-    // Optional parameters
-    direction: 'horizontal',
-  
-    // Display multiple cards
-    slidesPerView: 3,
-    spaceBetween: 20,
-    slidesPerGroup: 1,
-  
-    // If you need navigation buttons
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+    const swiperEl = document.querySelector('swiper-container')
 
-  });
-  
+    Object.assign(swiperEl, {
+      slidesPerView: 3,
+      centeredSlides: true,
+      spaceBetween: 30,
+      navigation: true,
+      virtual: {
+        slides: (function () {
+          const slides = [];
+          for (var i = 0; i < 600; i += 1) {
+            slides.push('Slide ' + (i + 1));
+          }
+          return slides;
+        })(),
+      },
+    });
+
+    swiperEl.initialize();
+
+    const swiper = swiperEl.swiper;
