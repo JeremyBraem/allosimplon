@@ -1,4 +1,4 @@
-	<nav class="z-50 relative px-3 py-2 md:px-4 md:py-3 flex items-center bg-[#FCFCFC]">
+<nav class="z-50 relative px-3 py-2 md:px-4 md:py-3 flex items-center bg-[#FCFCFC]">
 		<a class="font-bold leading-none" href="index.php">
 			<img src="asset/img/AlloSimplonTR.png" class="md:w-20">
 		</a>
@@ -36,8 +36,19 @@
       			</div>
 			</li>
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="contact.php">Contact</a></li>
-			<li><a class="text-sm text-black hover:text-[#694AA6]" href="inscription.php">Inscription</a></li>
-			<li><a class="text-sm text-black hover:text-[#694AA6]" href="connexion.php">Connexion</a></li>
+			
+			<?php 
+                    if(!isset($_SESSION["user"])){
+						echo    
+					'<li><a class="text-sm text-black hover:text-[#694AA6]" href="inscription.php">Inscription</a></li>
+					<li><a class="text-sm text-black hover:text-[#694AA6]" href="connexion.php">Connexion</a></li>';
+					} 
+					else 
+					{
+						echo '<li><a class="text-sm text-black hover:text-[#694AA6]" href="profil.php">Profil</a></li>
+						<li><a class="text-sm text-black hover:text-[#694AA6]" href="traitement/logout.php">Deconnexion</a></li>';
+					}
+					?>
 		</ul>
 	</nav>
 	<div class="navbar-menu relative z-50 hidden">
@@ -70,12 +81,26 @@
 					<li class="">
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="contact.php">Contact</a>
 					</li>
-					<li class="">
+					<?php 
+                    if(!isset($_SESSION["user"])){
+						echo
+					'<li class="">
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="connexion.php">Connexion</a>
 					</li>
 					<li class="">
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="inscription.php">Inscription</a>
+					</li>';
+					} 
+					else 
+					{
+						echo '<li class="">
+						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="profil.php">Profil</a>
 					</li>
+					<li class="">
+						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="traitement/logout.php">Deconnexion</a>
+					</li>';
+					}
+					?>
 				</ul>
 			</div>
 		</nav>

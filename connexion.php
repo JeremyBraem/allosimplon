@@ -1,3 +1,9 @@
+<?php
+session_start();
+    if(isset($_SESSION["user"])){
+        header("location:profil.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +28,7 @@
     ?>
     <section>
         <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Connexion</h2>
-        <form class=" lg:w-2/4 m-auto flex flex-col p-10">
+        <form class=" lg:w-2/4 m-auto flex flex-col p-10" action="traitement/login.php" method="POST">
             <label class="mb-2 text-xl">E-mail :</label>
             <input class="border border-black p-1 bg-white rounded" type="email" name="email" required>
             <label class="mb-2 mt-7 text-xl">Mot de passe :</label>
@@ -31,9 +37,6 @@
             <button class="place-self-center mt-8 bg-[#8666C6] text-[#FCFCFC] px-10 py-3 text-xl rounded">Se connecter</button>
         </form>
     </section>
-
-
-
     <?php
         include ('content/footer.php');
     ?>

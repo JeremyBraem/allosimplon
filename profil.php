@@ -1,3 +1,32 @@
+<?php
+session_start(); // Démarrer la session
+require_once ('content/bdd.php');
+
+// Exécuter une requête SQL pour récupérer les données de l'utilisateur
+$sql = "SELECT nom_user, prenom_user, email_user FROM user";
+$result = $pdo->query($sql);
+
+// Traiter les résultats de la requête SQL
+if ($result->rowCount() > 0) {
+    // Récupérer les données de l'utilisateur et les stocker dans des variables
+    while ($row = $result->fetch()) {
+        $_SESSION['nom_user'] = $row['nom_user'];
+        $_SESSION['prenom_user'] = $row['prenom_user'];
+        $_SESSION['email_user'] = $row['email_user'];
+    }
+} else {
+    echo "Aucun utilisateur trouvé.";
+}
+
+// Fermer la connexion à la base de données
+$pdo = null;
+
+// Les variables sont maintenant stockées dans la session et peuvent être récupérées sur d'autres pages
+$nom_user = $_SESSION['nom_user'];
+$prenom_user = $_SESSION['prenom_user'];
+$email_user = $_SESSION['email_user'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +47,7 @@
 </head>
 <body class="bg-[#FCFCFC]">
     <?php
-        include ('content/navbar.php');
+        include ('content/navbar.php');      
     ?>
     <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">PROFIL</h2>
     <div class="md:w-1/3 md:m-auto md:p-10 flex flex-col mt-10">
@@ -29,11 +58,13 @@
                     <h3 class="text-xl">Information générales</h3>
                 </div>
                 <div class="flex gap-10 mt-10">
-                    <p>Nom</p>
-                    <p>Prénom</p>
+                    <?php
+                     echo "<p>$nom_user</p>
+                    <p>$prenom_user</p>";
+                    ?>
                 </div>
             </div>
-        </div>        
+        </div>
         <div class="flex pl-5 md:pl-9">
             <img src="asset/img/compte.png" class="h-10">
             <div class="flex flex-col pl-5">
@@ -41,8 +72,10 @@
                     <h3 class="text-xl">Compte</h3>
                 </div>
                 <div class="flex flex-col gap-5 mt-10">
-                    <p>email@email.com</p>
-                    <p>***********</p>
+                    <?php
+                    echo "<p>$email_user</p>
+                    <p>***********</p>"
+                    ?>
                 </div>
             </div>
         </div>

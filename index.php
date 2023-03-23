@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,7 @@
     <link href="asset/style/reset.css" rel="stylesheet">
     <link href="asset/style/font.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="shortcut icon" href=""/>
+    <link rel="shortcut icon" href="asset/img/AlloSimplonTR.png"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro&display=swap" rel="stylesheet">
@@ -260,6 +263,9 @@
     </section>
     <section>
         <img class="thumbnail" src="asset/img/parallax.png" alt="image">
+    </section>
+    <section>
+        
     </section>
     <!-- <section class="bg-[#8666C6]">
         <h2 class="text-center uppercase text-white text-2xl p-9">Catégories</h2>
