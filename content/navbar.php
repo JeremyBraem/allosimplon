@@ -1,3 +1,18 @@
+<?php 
+require_once ('content/bdd.php');
+
+// Req SQL catégories
+$sql = "SELECT * FROM `film` 
+	INNER JOIN avoir ON film.id_film = avoir.id_film
+	INNER JOIN categories ON avoir.id_categories = categories.id_categories
+ 	WHERE nom_categories='Thriller psychologique'";
+
+$stmt = $pdo->query($sql);
+
+// résultats
+$cat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <nav class="z-50 relative px-3 py-2 md:px-4 md:py-3 flex items-center bg-[#FCFCFC]">
 		<a class="font-bold leading-none" href="index.php">
 			<img src="asset/img/AlloSimplonTR.png" class="md:w-20">
@@ -23,15 +38,14 @@
 				<div class="group inline">
 					<a class="text-sm text-black hover:text-[#694AA6]" href="page-film.php">Films ▼</a>
 					<ul class="absolute hidden text-gray-700 pt-1 group-hover:block shadow">
-						<li class="">
-							<a class="bg-[#694AA6] text-[#FCFCFC] py-2 px-5 block">Catégories</a>
+						<li class="flex justify-center bg-[#694AA6]">
+							<a class=" text-[#FCFCFC] py-2 px-5 block">Catégories</a>
 						</li>
+						<?php foreach ($cat as $categories): ?>
 						<li class="">
-							<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="#">Action</a>
+							<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="<?php echo "page-film.php?id=" . $categories['id_categories'] . "'>" . $categories['nom_categories']; ?>"><?php echo $categories['nom_categories'] ?></a>
 						</li>
-						<li class="">
-							<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="#">Aventure</a>
-						</li>
+						<?php endforeach ?>
 					</ul>
       			</div>
 			</li>
@@ -39,7 +53,7 @@
 			
 			<?php 
                     if(!isset($_SESSION["user"])){
-						echo    
+						echo
 					'<li><a class="text-sm text-black hover:text-[#694AA6]" href="inscription.php">Inscription</a></li>
 					<li><a class="text-sm text-black hover:text-[#694AA6]" href="connexion.php">Connexion</a></li>';
 					} 

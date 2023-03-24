@@ -1,50 +1,36 @@
 <?php
-session_start(); // Démarrer la session
+session_start();
+// Connexion BDD
 require_once ('content/bdd.php');
-
-$sql = "SELECT *
+// Récup l'id
+$id_film = $_GET['id'];
+// Jointure
+$sql = "SELECT * ,
+               GROUP_CONCAT(DISTINCT nom_acteur SEPARATOR ', ') AS acteurs,
+               GROUP_CONCAT(DISTINCT nom_realisateur SEPARATOR ', ') AS realisateurs,
+               GROUP_CONCAT(DISTINCT nom_categories SEPARATOR ', ') AS categories
         FROM film
-        JOIN joue ON film.id_film = joue.id_film
-        JOIN acteur ON joue.id_acteur = acteur.id_acteur
-        JOIN fait ON film.id_film = fait.id_film
-        JOIN realisateur ON fait.id_realisateur = realisateur.id_realisateur";
+        LEFT JOIN joue ON film.id_film = joue.id_film
+        LEFT JOIN acteur ON acteur.id_acteur = joue.id_acteur
+        LEFT JOIN fait ON film.id_film = fait.id_film
+        LEFT JOIN realisateur ON realisateur.id_realisateur = fait.id_realisateur
+        LEFT JOIN avoir ON film.id_film = avoir.id_film
+        LEFT JOIN categories ON categories.id_categories = avoir.id_categories
+        WHERE film.id_film = :id_film
+        GROUP BY film.id_film";
 
-$result = $pdo->query($sql);
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id_film', $id_film, PDO::PARAM_INT);
+// Execute la requête
+$stmt->execute();
+$film = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Stocker les données des films et des acteurs dans un tableau
-$films = array();
-$acteurs = array();
-$realisateurs = array();
-
-while ($row = $result->fetch()) {
-    $film = array(  
-        'titre_film' => $row['titre_film'],
-        'synopsis_film' => $row['synopsis_film'],
-        'bande_annonce_film' => $row['bande_annonce_film'],
-        'image_film' => $row['image_film'],
-        'date_film' => $row['date_film'],
-        'lien_film' => $row['lien_film'],
-        'realisateur' => $row['nom_realisateur'] // Stocker directement le nom du réalisateur
-    );
-
-
-    $acteur = array(
-        'nom_acteur' => $row['nom_acteur']
-    );
-    
-    // Ajouter le film au tableau des films
-    array_push($films, $film);
-    
-    // Ajouter l'acteur au tableau des acteurs pour ce film
-    if (!isset($acteurs[$row['id_film']])) {
-        $acteurs[$row['id_film']] = array();
-    }
-    array_push($acteurs[$row['id_film']], $acteur);
+// Si le film existe dans la bdd
+if (!$film) {
+    echo "Ce film n'existe pas.";
+    exit;
 }
 
-// Stocker les tableaux des films et des acteurs dans la session
-$_SESSION['films'] = $films;
-$_SESSION['acteurs'] = $acteurs;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,34 +56,18 @@ $_SESSION['acteurs'] = $acteurs;
         include ('content/navbar.php');
     ?>
     <section class="">
-        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9"><?php echo $film['titre_film'] ?></h2>
+        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9"><?php echo $film['titre_film']; ?></h2>
         <div class="md:bg-[#FCFCFC] md:w-4/5 md:m-auto">
             <div class="flex flex-col md:flex-row p-5 md:p-10 md:justify-center md:m-auto">
                 <div class="flex justify-center">
-                    <img src="asset/img/affiche-film-joker.jpg" class="w-80">
+                    <img src="asset/img/<?php echo $film['image_film'];?>" class="md:w-80">
                 </div>
-                <div class="px-10">
-                    <p class="md:text-base mb-2 mt-10"><?php echo $film['titre_film'] ?></p>
-                    <p class="md:text-base mb-2">
-                        <?php foreach ($_SESSION['acteurs'] as $acteurs) {
-                            echo "Acteurs : ";
-                            foreach ($acteurs as $acteur) {
-                                echo $acteur['nom_acteur'] . "<br>";
-                            }
-                        }
-                        ?>
-                    </p>
-                    <p class="md:text-base mb-2">
-                        <?php foreach ($_SESSION['realisateurs'] as $realisateurs) {
-                            echo "realisateurs : ";
-                            foreach ($realisateurs as $realisateur) {
-                                echo $realisateur['nom_realisateur'] . "<br>";
-                            }
-                        }
-                        ?>
-                    </p>
-                    <p class="md:text-base mb-2">Sortie : <?php echo $film['date_film'] ?></p>
-                    <p class="md:text-base mb-5">Genre : Genre</p>
+                <div class="px-5 md:px-10 md:w-96">
+                    <p class="md:text-base mb-2 mt-10"><?php echo "<strong>Titre du film :</strong> " . $film['titre_film']; ?></p>
+                    <p class="md:text-base mb-2"> <?php echo "<strong>Réalisateurs :</strong> " . $film['realisateurs']; ?></p>
+                    <p class="md:text-base mb-2"><?php echo "<strong>Acteurs : </strong>" .  $film['acteurs']; ?></p>
+                    <p class="md:text-base mb-2"><?php echo "<strong>Sortie :</strong> " . $film['date_film']; ?></p>
+                    <p class="md:text-base mb-5"><?php echo "<strong>Genre :</strong> " . $film['categories']; ?></p>
                     <a href="<?php echo $film['lien_film']?>" target="_blank"><button class="place-self-center bg-[#8666C6] text-[#FCFCFC] px-5 py-3 rounded">Lien vers la platform</button></a>
                 </div>
             </div>
@@ -106,7 +76,7 @@ $_SESSION['acteurs'] = $acteurs;
                 <p><?php echo $film['synopsis_film'] ?></p>
             </div>
             <div class="flex justify-center px-5 md:px-0 mb-10">
-                <iframe class="md:w-full md:h-96" src="<?php echo $film['bande_annonce_film'] ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe class="md:w-full md:h-96" src="<?php echo $film['bande_annonce_film'] ?>" allowfullscreen autoplay='0'></iframe>
             </div>
         </div>
     </section>
