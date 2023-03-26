@@ -3,21 +3,14 @@ session_start();
 
 require_once ('content/bdd.php');
 
-if (isset($_GET['id'])) {
-    $id_categorie = $_GET['id'];
-    $sql_film = "SELECT *
-            FROM film
-            INNER JOIN avoir ON avoir.id_film = film.id_film
-            WHERE avoir.id_categories = :id_categorie";
-    $stmt_film = $pdo->prepare($sql_film);
-    $stmt_film->bindParam(':id_categorie', $id_categorie);
-    $stmt_film->execute();
-    $films = $stmt_film->fetchAll(PDO::FETCH_ASSOC);
-}
-else {
-    header('location:page-all-film.php');
-}
+// Requête SQL pour sélectionner tous les films
+$sql = "SELECT * FROM film";
 
+// Exécution de la requête
+$stmt = $pdo->query($sql);
+
+// Récupération des résultats
+$films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,29 +35,30 @@ else {
         include ('content/navbar.php');
     ?>
     <section>
-        <?php 
-        if (isset($_GET['id'])) {
-            $id_categorie = $_GET['id'];
-            // Ajouter une requête pour récupérer le nom de la catégorie
-            $sql_cat = "SELECT nom_categories FROM categories WHERE id_categories = :id_categorie";
-            $stmt_cat = $pdo->prepare($sql_cat);
-            $stmt_cat->bindParam(':id_categorie', $id_categorie);
-            $stmt_cat->execute();
-            $categorie = $stmt_cat->fetch(PDO::FETCH_ASSOC);
-            // Vérifier si la catégorie existe
-            if ($categorie) {
-                $nom_categorie = $categorie['nom_categories'];
-                // Afficher le nom de la catégorie dans une zone d'en-tête
-                echo "<h2 class='bg-[#8666C6] text-center uppercase text-white text-2xl p-9'>film : $nom_categorie</h2>";
-            }
-        }?>
-        </h2>
+        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">film</h2>
+        <div class="px-10 md:px-20 mt-10">
+            <div class="group inline">
+                <a class="text-xl text-black hover:text-[#694AA6]" href="#">Filtre ▼</a>
+                <ul class="absolute hidden text-gray-700 pt-1 group-hover:block shadow z-50">
+                    <li class="">
+                        <a class="bg-[#694AA6] text-[#FCFCFC] py-2 px-5 block">Catégories</a>
+                    </li>
+                    <?php 
+                        echo "<li>";
+                        foreach ($categories as $categorie) {
+                            echo "<li><a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='page-film.php?id=" . $categorie['id_categories'] . "'>" . $categorie['nom_categories'] . "</a></li>";
+                        }
+                        echo "</li>";
+					?>
+                </ul>
+            </div>
+        </div>
         <div class=" grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 my-10 md:gap-x-6 gap-x-3 px-10 md:px-20">
         <?php foreach ($films as $film): ?>
             <div class="mb-4">
                 <div class="bg-[#8666C6] rounded-sm overflow-hidden">
                     <a href="<?php echo "film.php?id=" . $film['id_film'] . "'>" . $film['titre_film']; ?>">
-                        <h3 class="text-xl text-center p-2 md:p-4 text-[16px] md:text-xl text-white"><?php echo $film['titre_film']; ?></h3>
+                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-xl text-white"><?php echo $film['titre_film']; ?></h3>
                         <img src="asset/img/<?php echo $film['image_film'];?>" class="rounded-b">
                     </a>
                 </div>

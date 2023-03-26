@@ -1,5 +1,16 @@
 <?php
-session_start()
+session_start();
+
+require_once ('content/bdd.php');
+
+// Requête SQL pour sélectionner tous les films
+$sql = "SELECT * FROM film";
+
+// Exécution de la requête
+$stmt = $pdo->query($sql);
+
+// Récupération des résultats
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,13 +65,14 @@ session_start()
     </div>
     <!-- Contenu -->
     <section>
-        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">à la une</h2>
+        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">à la une</h2>    
         <div class="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-10 md:mt-20 md:gap-x-6 gap-x-3 px-10 md:px-20">
+            <?php foreach ($results as $row): ?>
             <div class="mb-4">
                 <div class="bg-[#8666C6] rounded-sm overflow-hidden">
-                    <a href="#">
-                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                        <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
+                    <a href="<?php echo "film.php?id=" . $row['id_film'] . "'>" . $row['titre_film']; ?>">
+                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-xl text-white"><?php echo $row['titre_film']; ?></h3>
+                        <img src="asset/img/<?php echo $row['image_film'];?>" class="rounded-b">
                     </a>
                 </div>
                 <div class="flex place-content-around pt-1">
@@ -68,42 +80,7 @@ session_start()
                     <img src="asset/img/unlike.png" class="h-5 md:w-5">
                 </div>
             </div>
-            <div class="mb-4">
-                <div class="bg-[#8666C6] rounded-sm overflow-hidden">
-                    <a href="#">
-                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                        <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
-                    </a>
-                </div>
-                <div class="flex place-content-around pt-1">
-                    <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                </div>
-            </div>
-            <div class="mb-4">
-                <div class="bg-[#8666C6] rounded-sm overflow-hidden">
-                    <a href="#">
-                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                        <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
-                    </a>
-                </div>
-                <div class="flex place-content-around pt-1">
-                    <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                </div>
-            </div>
-            <div class="mb-4">
-                <div class="bg-[#8666C6] rounded-sm overflow-hidden">
-                    <a href="#">
-                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-white">Joker</h3>
-                        <img src="asset/img/affiche-film-joker.jpg" class="rounded-b">
-                    </a>
-                </div>
-                <div class="flex place-content-around pt-1">
-                    <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                </div>
-            </div>
+            <?php endforeach ?>
         </div>
     </section>
     <section class="mb-10">
@@ -262,85 +239,15 @@ session_start()
         </div>
     </section>
     <section>
-        <img class="thumbnail" src="asset/img/parallax.png" alt="image">
+        <img class="thumbnail-1 my-10" src="asset/img/parallax-1.png" alt="image">
+        <img class="thumbnail-2 my-10" src="asset/img/parallax-2.png" alt="image">
     </section>
-    <section>
-        
-    </section>
-    <!-- <section class="bg-[#8666C6]">
-        <h2 class="text-center uppercase text-white text-2xl p-9">Catégories</h2>
-        <swiper-container>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class=" bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-        </swiper-container>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
-    <script>
-        const swiperEl = document.querySelector('swiper-container')
-        Object.assign(swiperEl, {
-        slidesPerView: 3,
-        centeredSlides: true,
-        spaceBetween: 30,
-        navigation: true,
-        virtual: {
-            slides: (function () {
-            const slides = [];
-            for (var i = 0; i < 600; i += 1) {
-                slides.push('Slide ' + (i + 1));
-            }
-            return slides;
-            })(),
-        },
-        });
-
-        swiperEl.initialize();
-
-        const swiper = swiperEl.swiper;
-    </script> -->
     <?php
         include ('content/footer.php');
     ?>
     <script src="asset/js/swiper.js"></script>
-    <script src="asset/js/parallax.js"></script>
+    <script src="asset/js/parallax-1.js"></script>
+    <script src="asset/js/parallax-2.js"></script>
+
 </body>
 </html>
