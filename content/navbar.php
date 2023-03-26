@@ -1,18 +1,11 @@
-<?php 
-require_once ('content/bdd.php');
-
-// Req SQL catégories
-$sql = "SELECT * FROM `film` 
-	INNER JOIN avoir ON film.id_film = avoir.id_film
-	INNER JOIN categories ON avoir.id_categories = categories.id_categories
- 	WHERE nom_categories='Thriller psychologique'";
-
-$stmt = $pdo->query($sql);
-
-// résultats
-$cat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+<?php
+require_once('content/bdd.php');
+// Récup nom de catégories
+$sql_list = "SELECT * FROM categories";
+$stmt_list = $pdo->prepare($sql_list);
+$stmt_list->execute();
+$categories = $stmt_list->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 <nav class="z-50 relative px-3 py-2 md:px-4 md:py-3 flex items-center bg-[#FCFCFC]">
 		<a class="font-bold leading-none" href="index.php">
 			<img src="asset/img/AlloSimplonTR.png" class="md:w-20">
@@ -36,16 +29,19 @@ $cat = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="index.php">Accueil</a></li>
 			<li>
 				<div class="group inline">
-					<a class="text-sm text-black hover:text-[#694AA6]" href="page-film.php">Films ▼</a>
+					<a class="text-sm text-black hover:text-[#694AA6]" href="page-all-film.php">Films ▼</a>
 					<ul class="absolute hidden text-gray-700 pt-1 group-hover:block shadow">
 						<li class="flex justify-center bg-[#694AA6]">
 							<a class=" text-[#FCFCFC] py-2 px-5 block">Catégories</a>
 						</li>
-						<?php foreach ($cat as $categories): ?>
-						<li class="">
-							<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="<?php echo "page-film.php?id=" . $categories['id_categories'] . "'>" . $categories['nom_categories']; ?>"><?php echo $categories['nom_categories'] ?></a>
-						</li>
-						<?php endforeach ?>
+						<?php
+							echo "<li>";
+							foreach ($categories as $categorie) {
+								echo "<li><a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='page-film.php?id=" . $categorie['id_categories'] . $categorie['nom_categories'] ."'>" . $categorie['nom_categories'] . "</a></li>";
+							}
+							echo "</li>";
+
+					 	?>
 					</ul>
       			</div>
 			</li>
@@ -74,7 +70,7 @@ $cat = $stmt->fetchAll(PDO::FETCH_ASSOC);
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="index.php">Accueil</a>
 					</li>
 					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="page-film.php">Films</a>
+						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="page-all-film.php">Films</a>
 					</li>
 					<li>
 						<div class="group inline">
@@ -83,12 +79,13 @@ $cat = $stmt->fetchAll(PDO::FETCH_ASSOC);
 								<li class="">
 									<a class="bg-[#694AA6] text-[#FCFCFC] py-2 px-5 block">Genre</a>
 								</li>
-								<li class="">
-									<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="#">Action</a>
-								</li>
-								<li class="">
-									<a class="bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block" href="#">Aventure</a>
-								</li>
+								<?php 
+									echo "<li>";
+									foreach ($categories as $categorie) {
+										echo "<li><a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='page-film.php?id=" . $categorie['id_categories'] . "'>" . $categorie['nom_categories'] . "</a></li>";
+									}
+									echo "</li>";
+								?>
 							</ul>
 						</div>
 					</li>

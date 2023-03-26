@@ -24,13 +24,6 @@ $stmt->bindParam(':id_film', $id_film, PDO::PARAM_INT);
 // Execute la requête
 $stmt->execute();
 $film = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// Si le film existe dans la bdd
-if (!$film) {
-    echo "Ce film n'existe pas.";
-    exit;
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

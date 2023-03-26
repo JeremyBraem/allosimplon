@@ -239,85 +239,15 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </section>
     <section>
-        <img class="thumbnail" src="asset/img/parallax.png" alt="image">
+        <img class="thumbnail-1 my-10" src="asset/img/parallax-1.png" alt="image">
+        <img class="thumbnail-2 my-10" src="asset/img/parallax-2.png" alt="image">
     </section>
-    <section>
-        
-    </section>
-    <!-- <section class="bg-[#8666C6]">
-        <h2 class="text-center uppercase text-white text-2xl p-9">Catégories</h2>
-        <swiper-container>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class=" bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-            <div class="swiper-slide bg-[#FCFCFC] rounded-sm overflow-hidden mb-4">
-                <a href="#">
-                    <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-3xl text-[#8666C6]">Action</h3>
-                    <img src="asset/img/action-genre.jpg">
-                </a>
-            </div>
-        </swiper-container>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
-    <script>
-        const swiperEl = document.querySelector('swiper-container')
-        Object.assign(swiperEl, {
-        slidesPerView: 3,
-        centeredSlides: true,
-        spaceBetween: 30,
-        navigation: true,
-        virtual: {
-            slides: (function () {
-            const slides = [];
-            for (var i = 0; i < 600; i += 1) {
-                slides.push('Slide ' + (i + 1));
-            }
-            return slides;
-            })(),
-        },
-        });
-
-        swiperEl.initialize();
-
-        const swiper = swiperEl.swiper;
-    </script> -->
     <?php
         include ('content/footer.php');
     ?>
     <script src="asset/js/swiper.js"></script>
-    <script src="asset/js/parallax.js"></script>
+    <script src="asset/js/parallax-1.js"></script>
+    <script src="asset/js/parallax-2.js"></script>
+
 </body>
 </html>

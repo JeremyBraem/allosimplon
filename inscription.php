@@ -50,29 +50,35 @@ if(isset($_POST['insert'])){
             // l'adresse email existe déjà dans la base de données, afficher un message d'erreur
             $message = '<p class="text-red-600 font-bold">Cette adresse email est déjà enregistrée.</p>';
         } else {
-            // l'adresse email n'existe pas encore dans la base de données, insérer les données
-            $hash = password_hash($_POST['mdp_user'], PASSWORD_DEFAULT);
-            $nom_user = htmlspecialchars($_POST['nom_user']);
-            $prenom_user = htmlspecialchars($_POST['prenom_user']);
-            $id_role = "2";
-            // Requête mysql pour insérer des données
-            $sql = "INSERT INTO `user`(`nom_user`, `email_user`, `mdp_user`, `prenom_user`, `id_role`) VALUES (?,?,?,?,?)";
-            $res = $pdo->prepare($sql);
-            $exec = $res->execute(array($nom_user,$email_user,$hash,$prenom_user,$id_role));
-
-            if($exec) {
-                // insertion réussie, afficher un message de confirmation
-                $message = '<p class="text-green-600 font-bold">Inscription validé</p>';
+            // l'adresse email n'existe pas dans bdd, regex mdp
+            if(preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/', $_POST['mdp_user'])) {
+                $hash = password_hash($_POST['mdp_user'], PASSWORD_DEFAULT);
+                $nom_user = htmlspecialchars($_POST['nom_user']);
+                $prenom_user = htmlspecialchars($_POST['prenom_user']);
+                $id_role = "2";
+                // Requête mysql pour insérer des données
+                $sql = "INSERT INTO `user`(`nom_user`, `email_user`, `mdp_user`, `prenom_user`, `id_role`) VALUES (?,?,?,?,?)";
+                $res = $pdo->prepare($sql);
+                $exec = $res->execute(array($nom_user,$email_user,$hash,$prenom_user,$id_role));
+            
+                if($exec) {
+                    // insertion réussie, afficher un message de confirmation
+                    $message = '<p class="text-green-600 font-bold">Inscription validé</p>';
                 }
             }
-        }
-        catch(PDOException $e) {
-            // Redirection vers la page de login avec un message d'erreur
-            $message = "Erreur de connexion";
-            echo $message;
-            exit();
+            else {
+                $message = '<p class="text-red-600 font-bold">Le mot de passe doit contenir un minimum de 8 caractères, au moins une lettre majuscule, au moins une lettre minuscule et au moins un chiffre.</p>';
+            }
         }
     }
+    catch(PDOException $e) {
+        // Redirection vers la page de login avec un message d'erreur
+        $message = "Erreur de connexion";
+        echo $message;
+        exit();
+    }
+}
+
     include ('content/navbar.php');
     ?>
     <section>

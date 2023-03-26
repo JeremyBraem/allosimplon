@@ -1,7 +1,7 @@
 let defaultTransform = 0;
 function goNext() {
     defaultTransform = defaultTransform - 295;
-    var slider = document.getElementById("slider");
+    let slider = document.getElementById("slider");
     if (Math.abs(defaultTransform) >= slider.scrollWidth / 1) defaultTransform = 0;
     slider.style.transform = "translateX(" + defaultTransform + "px)";
 }
