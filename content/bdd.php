@@ -37,7 +37,7 @@ $dbname = "bddex";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // Configuration de l'attribut PDO::ATTR_ERRMODE pour afficher les erreurs
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
     echo "Erreur : " . $e->getMessage();
     exit();

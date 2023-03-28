@@ -60,7 +60,6 @@ if(isset($_POST['insert'])){
                 $sql = "INSERT INTO `user`(`nom_user`, `email_user`, `mdp_user`, `prenom_user`, `id_role`) VALUES (?,?,?,?,?)";
                 $res = $pdo->prepare($sql);
                 $exec = $res->execute(array($nom_user,$email_user,$hash,$prenom_user,$id_role));
-            
                 if($exec) {
                     // insertion réussie, afficher un message de confirmation
                     $message = '<p class="text-green-600 font-bold">Inscription validé</p>';
