@@ -21,6 +21,8 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="asset/style/reset.css" rel="stylesheet">
     <link href="asset/style/font.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
     <link rel="shortcut icon" href="asset/img/AlloSimplonTR.png"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,18 +67,17 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <!-- Contenu -->
     <section>
-        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">à la une</h2>    
+        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">à la une</h2>
         <div class="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-10 md:mt-20 md:gap-x-6 gap-x-3 px-10 md:px-20">
             <?php foreach ($results as $row): ?>
             <div class="mb-4">
                 <div class="bg-[#8666C6] rounded-sm overflow-hidden">
                     <a href="<?php echo "film.php?id=" . $row['id_film'] . "'>" . $row['titre_film']; ?>">
-                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-xl text-white"><?php echo $row['titre_film']; ?></h3>
-                        <img src="asset/img/<?php echo $row['image_film'];?>" class="rounded-b">
+                        <h3 class="text-xl text-center py-2 md:p-4 md:text-xl text-white"><?php echo $row['titre_film']; ?></h3>
+                        <img src="asset/img/affiche/<?php echo $row['image_film']; ?>" class="rounded-b h-44 md:h-96">
                     </a>
                 </div>
                 <div class="flex place-content-around pt-1">
-                    <p>De : Todd Phillips</p>
                     <img src="asset/img/unlike.png" class="h-5 md:w-5">
                 </div>
             </div>
@@ -97,7 +98,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>
                         </div>
@@ -109,7 +109,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>                        </div>
                         <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
@@ -120,7 +119,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>                        </div>
                         <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
@@ -131,7 +129,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>                        </div>
                         <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
@@ -142,7 +139,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>                        </div>
                         <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
@@ -153,7 +149,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>                        </div>
                         <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
@@ -164,7 +159,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>                        </div>
                         <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
@@ -175,7 +169,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>                        </div>
                         <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
@@ -186,7 +179,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>                        </div>
                         <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
@@ -197,7 +189,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>                        </div>
                         <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
@@ -208,9 +199,9 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
+                            </div>                        
+                        </div>
                         <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
                             <a href="#">
                                 <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
@@ -219,7 +210,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>                        
                         </div>
@@ -239,7 +229,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </section>
     <section>
-        <img class="thumbnail-1 my-10" src="asset/img/parallax-1.png" alt="image">
+        <img class="thumbnail-1 md:my-10" src="asset/img/parallax-1.png" alt="image">
         <img class="thumbnail-2 my-10" src="asset/img/parallax-2.png" alt="image">
     </section>
     <?php

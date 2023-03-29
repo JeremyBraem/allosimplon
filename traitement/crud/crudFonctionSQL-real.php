@@ -18,16 +18,16 @@ function getDatabaseConnexion() {
     }
 }
 
-function getAllFilms() {
+function getAllRealisateur() {
     $pdo = getDatabaseConnexion();
-    $req = 'SELECT * FROM film';
+    $req = 'SELECT * FROM realisateur';
     $rows = $pdo->query($req);
     return $rows;
 }
 
-function readFilm($id_film) {
+function readRealisateur($id_realisateur) {
     $pdo = getDatabaseConnexion();
-    $req = "SELECT * FROM film WHERE id_film = '$id_film'";
+    $req = "SELECT * FROM realisateur WHERE id_realisateur = '$id_realisateur'";
     $stmt = $pdo->query($req);
     $row = $stmt->fetchAll();
     if (!empty($row)) {
@@ -35,13 +35,11 @@ function readFilm($id_film) {
     }
 }
 
-function createFilm($titre_film, $synopsis_film, $bande_annonce_film, $lien_film, $image_film, $date_film) {
-    $synopsis_film = addslashes($synopsis_film);
-
+function createRealisateur($nom_realisateur) {
     try {
         $pdo = getDatabaseConnexion();
-        $req = "INSERT INTO film (titre_film, synopsis_film, bande_annonce_film, lien_film, image_film, date_film)
-                VALUE ('$titre_film', '$synopsis_film', '$bande_annonce_film', '$lien_film', '$image_film', '$date_film')";
+        $req = "INSERT INTO realisateur (nom_realisateur)
+                VALUE ('$nom_realisateur')";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -49,19 +47,13 @@ function createFilm($titre_film, $synopsis_film, $bande_annonce_film, $lien_film
     }
 }
 
-function updateFilm($id_film, $titre_film, $synopsis_film, $bande_annonce_film, $lien_film, $image_film, $date_film) {
-    $synopsis_film = addslashes($synopsis_film);
+function updateRealisateur($id_realisateur, $nom_realisateur) {
+    $nom_realisateur = addslashes($nom_realisateur);
     try {
         $pdo = getDatabaseConnexion();
-        $req = "UPDATE film SET 
-            titre_film = '$titre_film',
-            synopsis_film = '$synopsis_film',
-            bande_annonce_film = '$bande_annonce_film',
-            lien_film = '$lien_film',
-            image_film = '$image_film',
-            date_film = '$date_film'
-            WHERE id_film = $id_film";
-
+        $req = "UPDATE realisateur SET 
+            nom_realisateur = '$nom_realisateur',
+            WHERE id_realisateur = $id_realisateur";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -69,10 +61,10 @@ function updateFilm($id_film, $titre_film, $synopsis_film, $bande_annonce_film, 
     }
 }
 
-function deleteFilm($id_film) {
+function deleteRealisateur($id_realisateur) {
     try {
         $pdo = getDatabaseConnexion();
-        $req = "DELETE FROM film WHERE id_film = '$id_film' ";
+        $req = "DELETE FROM realisateur WHERE id_realisateur = '$id_realisateur' ";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -80,15 +72,9 @@ function deleteFilm($id_film) {
     }
 }
 
-function newFilm() {
-	$film['id_film'] = "";
-	$film['titre_film'] = "";
-	$film['synopsis_film'] = "";
-	$film['bande_annonce_film'] = "";
-	$film['lien_film'] = "";
-	$film['image_film'] = "";
-    $film['date_film'] = "";
-
+function newrealisateur() {
+	$realisateur['id_realisateur'] = "";
+	$realisateur['nom_realisateur'] = "";
 }
 
 ?>

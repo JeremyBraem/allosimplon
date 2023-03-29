@@ -53,7 +53,7 @@ $film = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="md:bg-[#FCFCFC] md:w-4/5 md:m-auto">
             <div class="flex flex-col md:flex-row p-5 md:p-10 md:justify-center md:m-auto">
                 <div class="flex justify-center">
-                    <img src="asset/img/<?php echo $film['image_film'];?>" class="md:w-80">
+                    <img src="asset/img/affiche/<?php echo $film['image_film'];?>" class="md:w-80">
                 </div>
                 <div class="px-5 md:px-10 md:w-96">
                     <p class="md:text-base mb-2 mt-10"><?php echo "<strong>Titre du film :</strong> " . $film['titre_film']; ?></p>

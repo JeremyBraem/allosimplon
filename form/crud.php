@@ -18,7 +18,7 @@
         include ('../traitement/crud/crudFonctionTable.php');
         $rows = getAllFilms();
         afficherTable($rows, getHeaderTable());
-    ?>        
+    ?>
     
     <a href=form-film.php?id=0 >ajouter un film</a> 
 
