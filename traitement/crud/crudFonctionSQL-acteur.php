@@ -18,16 +18,16 @@ function getDatabaseConnexion() {
     }
 }
 
-function getAllRealisateur() {
+function getAllacteur() {
     $pdo = getDatabaseConnexion();
-    $req = 'SELECT * FROM realisateur';
+    $req = 'SELECT * FROM acteur';
     $rows = $pdo->query($req);
     return $rows;
 }
 
-function readRealisateur($id_realisateur) {
+function readacteur($id_acteur) {
     $pdo = getDatabaseConnexion();
-    $req = "SELECT * FROM realisateur WHERE id_realisateur = '$id_realisateur'";
+    $req = "SELECT * FROM acteur WHERE id_acteur = '$id_acteur'";
     $stmt = $pdo->query($req);
     $row = $stmt->fetchAll();
     if (!empty($row)) {
@@ -35,11 +35,11 @@ function readRealisateur($id_realisateur) {
     }
 }
 
-function createRealisateur($nom_realisateur) {
+function createacteur($nom_acteur) {
     try {
         $pdo = getDatabaseConnexion();
-        $req = "INSERT INTO realisateur (nom_realisateur)
-                VALUE ('$nom_realisateur')";
+        $req = "INSERT INTO acteur (nom_acteur)
+                VALUE ('$nom_acteur')";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -47,12 +47,12 @@ function createRealisateur($nom_realisateur) {
     }
 }
 
-function updateRealisateur($id_realisateur, $nom_realisateur) {
+function updateacteur($id_acteur, $nom_acteur) {
     try {
         $pdo = getDatabaseConnexion();
-        $req = "UPDATE realisateur SET 
-            nom_realisateur = '$nom_realisateur'
-            WHERE id_realisateur = $id_realisateur";
+        $req = "UPDATE acteur SET 
+            nom_acteur = '$nom_acteur'
+            WHERE id_acteur = $id_acteur";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -60,10 +60,10 @@ function updateRealisateur($id_realisateur, $nom_realisateur) {
     }
 }
 
-function deleteRealisateur($id_realisateur) {
+function deleteacteur($id_acteur) {
     try {
         $pdo = getDatabaseConnexion();
-        $req = "DELETE FROM realisateur WHERE id_realisateur = '$id_realisateur' ";
+        $req = "DELETE FROM acteur WHERE id_acteur = '$id_acteur' ";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -71,9 +71,9 @@ function deleteRealisateur($id_realisateur) {
     }
 }
 
-function newrealisateur() {
-	$realisateur['id_realisateur'] = "";
-	$realisateur['nom_realisateur'] = "";
+function newacteur() {
+	$acteur['id_acteur'] = "";
+	$acteur['nom_acteur'] = "";
 }
 
 ?>

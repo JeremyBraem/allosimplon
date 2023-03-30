@@ -14,17 +14,18 @@
 </head>
 <body>
     <?php
-        include ('../traitement/crud/crudFonctionSQL.php');
-        include ('../traitement/crud/crudFonctionTable.php');
-        $rows = getAllFilms();
+        include ('../traitement/crud/crudFonctionSQL-cat.php');
+        include ('../traitement/crud/crudFonctionTable-cat.php');
+        $rows = getAllcat();
         afficherTable($rows, getHeaderTable());
     ?>
     
-    <a href=form-film.php?id=0 >ajouter un film<br></a> 
-    <a href=crud-real.php >Voir réalisateurs<br></a> 
-    <a href=crud-acteur.php >Voir acteur<br></a>
-    <a href=crud-cat.php >Voir catégories</a>
- 
+    <a href=form-cat.php?id=0 >Ajouter une catégorie<br></a> 
+    <a href=crud.php >Voir films<br></a> 
+    <a href=crud-real.php >Voir réalisateurs<br></a>
+    <a href=crud-acteur.php >Voir acteurs</a>
+
+    
 
 
 

@@ -1,7 +1,7 @@
 <?php
 
 function getDatabaseConnexion() {
-    define('DB_HOST', 'localhost'); 
+    define('DB_HOST', 'localhost');
     define('DB_NAME', 'allosimplon'); 
     define('DB_USER', 'root');
     define('DB_PASS', '');
@@ -18,16 +18,16 @@ function getDatabaseConnexion() {
     }
 }
 
-function getAllRealisateur() {
+function getAllcat() {
     $pdo = getDatabaseConnexion();
-    $req = 'SELECT * FROM realisateur';
+    $req = 'SELECT * FROM categories';
     $rows = $pdo->query($req);
     return $rows;
 }
 
-function readRealisateur($id_realisateur) {
+function readcat($id_categories) {
     $pdo = getDatabaseConnexion();
-    $req = "SELECT * FROM realisateur WHERE id_realisateur = '$id_realisateur'";
+    $req = "SELECT * FROM categories WHERE id_categories = '$id_categories'";
     $stmt = $pdo->query($req);
     $row = $stmt->fetchAll();
     if (!empty($row)) {
@@ -35,11 +35,11 @@ function readRealisateur($id_realisateur) {
     }
 }
 
-function createRealisateur($nom_realisateur) {
+function createcat($nom_categories) {
     try {
         $pdo = getDatabaseConnexion();
-        $req = "INSERT INTO realisateur (nom_realisateur)
-                VALUE ('$nom_realisateur')";
+        $req = "INSERT INTO categories (nom_categories)
+                VALUE ('$nom_categories')";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -47,12 +47,12 @@ function createRealisateur($nom_realisateur) {
     }
 }
 
-function updateRealisateur($id_realisateur, $nom_realisateur) {
+function updatecat($id_categories, $nom_categories) {
     try {
         $pdo = getDatabaseConnexion();
-        $req = "UPDATE realisateur SET 
-            nom_realisateur = '$nom_realisateur'
-            WHERE id_realisateur = $id_realisateur";
+        $req = "UPDATE categories SET
+            nom_categories = '$nom_categories'
+            WHERE id_categories = $id_categories";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -60,10 +60,10 @@ function updateRealisateur($id_realisateur, $nom_realisateur) {
     }
 }
 
-function deleteRealisateur($id_realisateur) {
+function deletecat($id_categories) {
     try {
         $pdo = getDatabaseConnexion();
-        $req = "DELETE FROM realisateur WHERE id_realisateur = '$id_realisateur' ";
+        $req = "DELETE FROM categories WHERE id_categories = '$id_categories' ";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -71,9 +71,9 @@ function deleteRealisateur($id_realisateur) {
     }
 }
 
-function newrealisateur() {
-	$realisateur['id_realisateur'] = "";
-	$realisateur['nom_realisateur'] = "";
+function newcat() {
+	$categories['id_categories'] = "";
+	$categories['nom_categories'] = "";
 }
 
 ?>

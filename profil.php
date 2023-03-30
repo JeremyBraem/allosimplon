@@ -18,10 +18,7 @@ if ($result->rowCount() > 0) {
     echo "Aucun utilisateur trouvé.";
 }
 
-// Fermer la connexion à la base de données
-$pdo = null;
-
-// Les variables sont maintenant stockées dans la session et peuvent être récupérées sur d'autres pages
+// Les variables sont stockées dans la session et peuvent être récupérées sur d'autres pages
 $nom_user = $_SESSION['nom_user'];
 $prenom_user = $_SESSION['prenom_user'];
 $email_user = $_SESSION['email_user'];

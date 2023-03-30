@@ -1,5 +1,4 @@
 <?php
-
 	include ('../../traitement/crud/crudFonctionSQL.php');
     include ('../../traitement/crud/crudFonctionTable.php');
 	
