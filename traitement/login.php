@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
             if (!$utilisateur) {
                 // Redirection vers la page de login avec un message d'erreur
-                $message = 'Utilisateur incorrect';
+                $message = 'Utilisateur ou mot de passe incorrect';
                 echo $message;
                 exit();
             } else {
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     exit();
                 } else {
                     // Redirection vers la page de login avec un message d'erreur
-                    $message = 'MDP incorrect';
+                    $message = 'Utilisateur ou mot de passe incorrect';
                     echo $message;
                     exit();
                 }

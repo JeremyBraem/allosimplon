@@ -22,7 +22,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="asset/style/font.css" rel="stylesheet">
     <link href="asset/style/swiper.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="shortcut icon" href=""/>
+    <link rel="shortcut icon" href="asset/img/AlloSimplonFav.png"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro&display=swap" rel="stylesheet">

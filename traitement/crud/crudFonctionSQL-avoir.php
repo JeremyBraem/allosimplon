@@ -18,16 +18,16 @@ function getDatabaseConnexion() {
     }
 }
 
-function getAllcat() {
+function getAllavoir() {
     $pdo = getDatabaseConnexion();
-    $req = 'SELECT * FROM categories';
+    $req = 'SELECT * FROM avoir';
     $rows = $pdo->query($req);
     return $rows;
 }
 
-function readcat($id_categories) {
+function readavoir($id_film, $id_categories) {
     $pdo = getDatabaseConnexion();
-    $req = "SELECT * FROM categories WHERE id_categories = '$id_categories'";
+    $req = "SELECT * FROM avoir WHERE id_film = '$id_film'";
     $stmt = $pdo->query($req);
     $row = $stmt->fetchAll();
     if (!empty($row)) {
@@ -35,11 +35,11 @@ function readcat($id_categories) {
     }
 }
 
-function createcat($nom_categories, $image_categories) {
+function createcat($nom_categories) {
     try {
         $pdo = getDatabaseConnexion();
-        $req = "INSERT INTO categories (nom_categories, image_categories)
-                VALUE ('$nom_categories', '$image_categories')";
+        $req = "INSERT INTO categories (nom_categories)
+                VALUE ('$nom_categories')";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -47,12 +47,11 @@ function createcat($nom_categories, $image_categories) {
     }
 }
 
-function updatecat($id_categories, $nom_categories, $image_categories) {
+function updatecat($id_categories, $nom_categories) {
     try {
         $pdo = getDatabaseConnexion();
         $req = "UPDATE categories SET
-            nom_categories = '$nom_categories',
-            image_categories = '$image_categories'
+            nom_categories = '$nom_categories'
             WHERE id_categories = $id_categories";
         $pdo->exec($req);
     }
@@ -64,7 +63,7 @@ function updatecat($id_categories, $nom_categories, $image_categories) {
 function deletecat($id_categories) {
     try {
         $pdo = getDatabaseConnexion();
-        $req = "DELETE FROM categories WHERE id_categories = '$id_categories'";
+        $req = "DELETE FROM categories WHERE id_categories = '$id_categories' ";
         $pdo->exec($req);
     }
     catch(PDOException $e) {
@@ -75,8 +74,6 @@ function deletecat($id_categories) {
 function newcat() {
 	$categories['id_categories'] = "";
 	$categories['nom_categories'] = "";
-    $categories['image_categories'] = "";
-    
 }
 
 ?>

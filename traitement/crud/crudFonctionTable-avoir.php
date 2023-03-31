@@ -28,9 +28,8 @@
 
 function getHeaderTable() {
 	$headers = array();
-	$headers[] = "ID";
-	$headers[] = "Nom";
-	$headers[] = "Image";
+	$headers[] = "Nom film";
+	$headers[] = "Nom cat";
 	return $headers;
 }
 

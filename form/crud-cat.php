@@ -21,7 +21,7 @@
     ?>
     
     <a href=form-cat.php?id=0 >Ajouter une catégorie<br></a> 
-    <a href=crud.php >Voir films<br></a> 
+    <a href=crud.php >Voir films<br></a>
     <a href=crud-real.php >Voir réalisateurs<br></a>
     <a href=crud-acteur.php >Voir acteurs</a>
 

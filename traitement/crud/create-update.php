@@ -26,7 +26,7 @@
 		$extensions = ['png', 'jpg', 'jpeg', 'webp', 'jfif'];
         $type = ['image/png', 'image/jpg', 'image/jpeg', 'image/webp', 'image/jfif'];
         $extension = explode('.', $name_file);
-        $max_size = 500000;
+        $max_size = 900000;
 		$file = uniqid() . '.' . strtolower(end($extension));
         if(in_array($type_file, $type))
         {
@@ -42,21 +42,29 @@
 					}
                     else {
 						echo "Upload échoué";
+                        echo "<a href='../../form/crud.php'>Liste des films</a>";
+                        die;
 					}
                 }
                 else
                 {
                     echo "Fichier trop lourd ou format incorrect";
+                    echo "<a href='../../form/crud.php'>Liste des films</a>";
+                    die;
                 }
             }
             else 
             {
                 echo "Extension non autorisé";
+                echo "<a href='../../form/crud.php'>Liste des films</a>";
+                die;
             }
         }   
         else 
         {
             echo "Type non autorisé";
+            echo "<a href='../../form/crud.php'>Liste des films</a>";
+            die;
         }
     }
 	
