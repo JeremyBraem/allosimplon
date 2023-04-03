@@ -73,13 +73,13 @@ $resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
     <!-- Contenu -->
     <section>
         <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">à la une</h2>
-        <div class="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-10 md:mt-20 md:gap-x-6 gap-x-3 px-10 md:px-20">
+        <div class="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-10 md:mt-20 md:gap-x-6 gap-x-3 px-5 md:px-10">
             <?php foreach ($results as $row): ?>
             <div class="mb-4">
-                <div class="bg-[#8666C6] rounded-sm overflow-hidden">
+                <div class="bg-[#8666C6] rounded-sm overflow-hidden h-56 md:h-[500px] w-full md:w-76">
                     <a href="<?php echo "film.php?id=" . $row['id_film'] . "'>" . $row['titre_film']; ?>">
                         <h3 class="text-xl text-center py-2 md:p-4 md:text-xl text-white"><?php echo $row['titre_film']; ?></h3>
-                        <img src="asset/img/affiche/<?php echo $row['image_film']; ?>" class="rounded-b h-44 md:h-96">
+                        <img src="asset/img/affiche/<?php echo $row['image_film']; ?>" class="rounded-b w-full h-full">
                     </a>
                 </div>
                 <div class="flex place-content-around pt-1">
@@ -97,7 +97,7 @@ $resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
                     <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
                     <?php foreach ($results as $row): ?>
 
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
+                        <div class="flex flex-shrink-0 flex-col relative w-60 md:w-64">
                             <a href="<?php echo "film.php?id=" . $row['id_film'] . "'>" . $row['titre_film']; ?>">
                                 <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center"><?php echo $row['titre_film']; ?></h2>
                                 <div class="">
@@ -153,10 +153,10 @@ $resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($resultsCat as $rowCat): ?>
             <swiper-slide >
                 <div class="mb-4 w-fit">
-                    <div class="bg-[#FCFCFC] rounded-sm overflow-hidden ">
+                    <div class="bg-[#FCFCFC] rounded-sm overflow-hidden h-44 md:h-52 md:w-60">
                         <a href="<?php echo "page-film.php?id=" . $rowCat['id_categories'] . "'>" . $rowCat['nom_categories']; ?>">
                             <h3 class="text-xl text-center py-2 md:p-4 md:text-xl text-black"><?php echo $rowCat['nom_categories']; ?></h3>
-                            <img src="asset/img/categorie/<?php echo $rowCat['image_categories']; ?>" class="rounded-sm-b h-44 md:h-36 md:w-60">
+                            <img src="asset/img/categorie/<?php echo $rowCat['image_categories']; ?>" class="rounded-sm-b w-full h-full">
                         </a>
                     </div>
                 </div>

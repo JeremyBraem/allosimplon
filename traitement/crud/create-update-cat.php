@@ -63,11 +63,6 @@
             die;
         }
     }
-    else {
-        echo "Aucune image<br>";
-        echo "<a href='../../form/crud-cat.php'>Liste des categories</a><br>";
-        die;
-    }
 	
 	if ($action == "CREATE") {
 		createcat($nom_categories, $image_categories);
