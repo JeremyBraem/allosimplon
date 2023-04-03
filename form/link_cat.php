@@ -1,3 +1,14 @@
+<?php 
+session_start();
+if (isset($_SESSION['id_role'])) {
+    if ($_SESSION['id_role'] != 1) {
+        header('location:../index.php');
+    }
+}
+else {
+    header('location:../index.php');
+}
+?>
 <?php
 $host = '127.0.0.1';
 $db   = 'allosimplon';

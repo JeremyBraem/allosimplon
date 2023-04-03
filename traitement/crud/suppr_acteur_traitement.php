@@ -17,13 +17,12 @@ try {
     } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-if (isset($_POST['delete_joue'])) {
-    // Récupérer les identifiants de l'acteur et du film
-    $id_acteur = $_POST['id_acteur'];
-    $id_film = $_POST['id_film'];
-    // Requête pour supprimer la ligne de la table de relation "joue"
-    $sql = "DELETE FROM joue WHERE id_acteur = :id_acteur AND id_film = :id_film";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['id_acteur' => $id_acteur, 'id_film' => $id_film]);
-}
+
+$sql = "DELETE FROM joue WHERE id_acteur = :id_acteur AND id_film = :id_film";
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id_acteur', $_POST['id_acteur']);
+$stmt->bindParam(':id_film', $_POST['id_film']);
+$stmt->execute();
+var_dump($_POST);
+die;
 ?>

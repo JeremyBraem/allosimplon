@@ -1,3 +1,14 @@
+<?php 
+session_start();
+if (isset($_SESSION['id_role'])) {
+    if ($_SESSION['id_role'] != 1) {
+        header('location:../index.php');
+    }
+}
+else {
+    header('location:../index.php');
+}
+?>
 <?php
 $host = '127.0.0.1';
 $db   = 'allosimplon';
@@ -20,52 +31,35 @@ try {
     $sql = "SELECT * FROM `film`";
     $stmt = $pdo ->prepare($sql);
     $stmt->execute();
-    if (isset($_POST['select_acteur'])){
-        echo"$_POST[select_acteur]";
-    }
-    if (isset($_POST['select_film'])){
-        echo"$_POST[select_film]";
-    }
+    
+
 ?>
 <div>
+    <form method="post">
     <select name='select_acteur' form='form_acteur'>
     <?php
     $sql = "SELECT * FROM `acteur`";
     $acteur = $pdo->prepare($sql);
-    $acteur -> execute();  
-        while($acteurs = $acteur->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+    $acteur -> execute();
+        while($acteurs = $acteur->fetch(PDO::FETCH_ASSOC)){
             echo"
                 <option value='$acteurs[id_acteur]'>$acteurs[nom_acteur]</option>";
-        }
+            }
             ?>
     </select>
     <select name='select_film' form='form_acteur'>
             <?php
-            if(isset($_GET['id_film'])){
-                $sql = "SELECT * FROM `film` WHERE id_film=$_GET[id_film]";
-                $film = $pdo->prepare($sql);
-                $film -> execute();
-                $film = $film->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
-                echo"
-                <option value=$film[id_film]>$film[titre_film]</option>";
-                while($film = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
-                    if ($_GET['id_film']!=$film['id_film']){
-                        echo"
-                        <option value='$film[id_film]'>$film[titre_film]</option>";
-                    }
-                }
-            }
-            else{
-                while($film = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+                while($film = $stmt->fetch(PDO::FETCH_ASSOC)){
                     echo"
-                        <option value='$film[id_film]'>$film[titre_film]</option>";
+                        <option name='titre_film' value='$film[id_film]'>$film[titre_film]</option>";
                 }
-            }
             ?>
     </select>
+    </form>
     <form action="../traitement/crud/link_acteur_traitement.php" method="POST" id='form_acteur'>
         <input type='submit'>
     </form>
+    
     <?php
     $sql = "SELECT acteur.nom_acteur AS nom_acteur, film.titre_film AS titre_film, acteur.id_acteur AS id_acteur, film.id_film AS id_film
     FROM joue
@@ -77,10 +71,11 @@ try {
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // Affichage des résultats
     foreach ($results as $row) {
-    echo $row['nom_acteur'] . " joue dans " . $row['titre_film'] . "<br>";
+    echo $row['nom_acteur'] . " joue dans " . $row['titre_film'] . "<br>";var_dump($row);
+    echo '<form action="../traitement/crud/suppr_acteur_traitement.php" method="POST"  name="delete_joue">
+    <input type="submit" value="supprimer">
+    </form>';
     }
     ?>
-    <div>
-</div>
 <a href="../form/crud.php">Retour aux films<br></a> 
 </div>

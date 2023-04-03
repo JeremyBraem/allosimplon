@@ -29,6 +29,7 @@ try {
         $stmt->execute();
         echo "acteur ajouté au film";
         echo '<a href=../../form/crud.php>Retour<br></a>';
+        die;
         }
     else {
         echo "acteur déjà ajouté au film";

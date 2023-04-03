@@ -1,11 +1,9 @@
 <?php
-session_start(); // Démarrer la session
+session_start();
 require_once ('content/bdd.php');
-
 // Exécuter une requête SQL pour récupérer les données de l'utilisateur
 $sql = "SELECT nom_user, prenom_user, email_user FROM user";
 $result = $pdo->query($sql);
-
 // Traiter les résultats de la requête SQL
 if ($result->rowCount() > 0) {
     // Récupérer les données de l'utilisateur et les stocker dans des variables
@@ -17,12 +15,10 @@ if ($result->rowCount() > 0) {
 } else {
     echo "Aucun utilisateur trouvé.";
 }
-
 // Les variables sont stockées dans la session et peuvent être récupérées sur d'autres pages
 $nom_user = $_SESSION['nom_user'];
 $prenom_user = $_SESSION['prenom_user'];
 $email_user = $_SESSION['email_user'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

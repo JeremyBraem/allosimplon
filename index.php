@@ -4,17 +4,19 @@ session_start();
 require_once ('content/bdd.php');
 
 // Requête SQL pour sélectionner tous les films
-$sql = "SELECT * FROM film";
+$sql = "SELECT * FROM film ORDER BY id_film DESC LIMIT 0,4";
+$sql_slide = "SELECT * FROM film ORDER BY id_film DESC LIMIT 0,10";
 $sqlCat = "SELECT * FROM categories";
 
 // Exécution de la requête
 $stmt = $pdo->query($sql);
+$stmt_slide = $pdo->query($sql_slide);
 $stmtCat = $pdo->query($sqlCat);
 
 // Récupération des résultats
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$results_slide = $stmt_slide->fetchAll(PDO::FETCH_ASSOC);
 $resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,10 +78,10 @@ $resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
         <div class="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-10 md:mt-20 md:gap-x-6 gap-x-3 px-5 md:px-10">
             <?php foreach ($results as $row): ?>
             <div class="mb-4">
-                <div class="bg-[#8666C6] rounded-sm overflow-hidden h-56 md:h-[500px] w-full md:w-76">
+                <div class="bg-[#8666C6] rounded-sm overflow-hidden h-56 md:h-[440px] w-full md:w-76">
                     <a href="<?php echo "film.php?id=" . $row['id_film'] . "'>" . $row['titre_film']; ?>">
                         <h3 class="text-xl text-center py-2 md:p-4 md:text-xl text-white"><?php echo $row['titre_film']; ?></h3>
-                        <img src="asset/img/affiche/<?php echo $row['image_film']; ?>" class="rounded-b w-full h-full">
+                        <img src="asset/img/affiche/<?php echo $row['image_film']; ?>" class="rounded-b w-full md:h-96">
                     </a>
                 </div>
                 <div class="flex place-content-around pt-1">
@@ -95,13 +97,13 @@ $resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
             <div class="w-full relative flex items-center justify-center px-10 md:px-16">
                 <div class="mx-auto overflow-x-hidden overflow-y-hidden">    
                     <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
-                    <?php foreach ($results as $row): ?>
+                    <?php foreach ($results_slide as $row_slide): ?>
 
                         <div class="flex flex-shrink-0 flex-col relative w-60 md:w-64">
-                            <a href="<?php echo "film.php?id=" . $row['id_film'] . "'>" . $row['titre_film']; ?>">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center"><?php echo $row['titre_film']; ?></h2>
+                            <a href="<?php echo "film.php?id=" . $row_slide['id_film'] . "'>" . $row_slide['titre_film']; ?>">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center"><?php echo $row_slide['titre_film']; ?></h2>
                                 <div class="">
-                                    <img src="asset/img/affiche/<?php echo $row['image_film']; ?>" class="rounded-b w-full md:h-96">
+                                    <img src="asset/img/affiche/<?php echo $row_slide['image_film']; ?>" class="rounded-b w-full md:h-96">
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
@@ -109,9 +111,7 @@ $resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         </div>
                         <?php endforeach ?>
-
                     </div>
-                    
                 </div>
             </div>
             <button aria-label="slide backward" class="absolute z-30 left-0 pl-3 md:pl-7 cursor-pointer" id="prev">

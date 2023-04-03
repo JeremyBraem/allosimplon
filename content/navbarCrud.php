@@ -1,16 +1,6 @@
-<?php
-require_once('content/bdd.php');
-// Récup nom de catégories
-$sql_list = "SELECT * FROM categories";
-$stmt_list = $pdo->prepare($sql_list);
-$stmt_list->execute();
-$categories = $stmt_list->fetchAll(PDO::FETCH_ASSOC);
-$sql_user = "SELECT id_user, nom_user, prenom_user, email_user, id_role FROM user";
-$result_user = $pdo->query($sql_user);
-?>
 <nav class="z-50 relative px-3 py-2 md:px-4 md:py-3 flex items-center bg-[#FCFCFC]">
 		<a class="font-bold leading-none" href="index.php">
-			<img src="asset/img/AlloSimplonTR.png" class="md:w-20">
+			<img src="../asset/img/AlloSimplonTR.png" class="md:w-20">
 		</a>
 		<form class="px-3 md:px-20 md:pl-40 lg:px-28 lg:pr-28" action="recherche.php" method="get">
 			<div class="relative">
@@ -29,45 +19,49 @@ $result_user = $pdo->query($sql_user);
 		</div>
 		<ul class="hidden lg:flex lg:items-center lg:w-auto lg:space-x-6 md:pr-20">
 			<li>
-				<a class="text-sm text-black hover:text-[#694AA6]" href="index.php">Accueil</a></li>
+				<a class="text-sm text-black hover:text-[#694AA6]" href="../index.php">Accueil</a>
+			</li>
 			<li>
 				<div class="group inline">
-					<a class="text-sm text-black hover:text-[#694AA6]" href="page-all-film.php">Films ▼</a>
+					<a class="text-sm text-black hover:text-[#694AA6]" href="page-all-film.php">Crud ▼</a>
 					<ul class="absolute hidden text-gray-700 pt-1 group-hover:block shadow">
 						<li class="flex justify-center bg-[#694AA6]">
-							<a class=" text-[#FCFCFC] py-2 px-5 block">Catégories</a>
+							<a class=" text-[#FCFCFC] py-2 px-5 block">Aller vers</a>
 						</li>
-						<?php
-							echo "<li>";
-							foreach ($categories as $categorie) {
-								echo "<li><a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='page-film.php?id=" . $categorie['id_categories'] . $categorie['nom_categories'] ."'>" . $categorie['nom_categories'] . "</a></li>";
-							}
-							echo "</li>";
-					 	?>
+						<li>
+							<a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='../form/crud.php'>Voir les films</a>
+						</li>	
+						<li>
+							<a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='../form/crud-real.php'>Voir les réalisateurs</a>
+						</li>
+						<li>
+							<a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='../form/crud-acteur.php'>Voir les acteurs</a>
+						</li>
+						<li>
+							<a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='../form/crud-cat.php'>Voir les catégories</a>
+						</li>
 					</ul>
       			</div>
 			</li>
-			<li><a class="text-sm text-black hover:text-[#694AA6]" href="contact.php">Contact</a></li>
-			<?php 
-			if(!isset($_SESSION["user"])){
-				echo
-			'<li><a class="text-sm text-black hover:text-[#694AA6]" href="inscription.php">Inscription</a></li>
-			<li><a class="text-sm text-black hover:text-[#694AA6]" href="connexion.php">Connexion</a></li>';
-			} 
-			else 
-			{ ?>
-				<li><a class="text-sm text-black hover:text-[#694AA6]" href="profil.php"><?php echo $_SESSION['prenom_user']; ?></a></li>
-				<li><a class="text-sm text-black hover:text-[#694AA6]" href="traitement/logout.php">Deconnexion</a></li>
-			<?php }
-			?>
-			<?php
-			if (isset($_SESSION["id_role"])) {
-			if($_SESSION["id_role"] != 1){ ?>
-			<li class="hidden"><a class="hidden text-sm text-black hover:text-[#694AA6]" href="contact.php">Admin</a></li>
-			<?php
-			}else { ?>
-				<li><a class="text-sm text-black hover:text-[#694AA6]" href="form/crud.php">Admin</a></li>
-			<?php } } ?>
+			<li>
+				<div class="group inline">
+					<a class="text-sm text-black hover:text-[#694AA6]" href="page-all-film.php">Liaison ▼</a>
+					<ul class="absolute hidden text-gray-700 pt-1 group-hover:block shadow">
+						<li class="flex justify-center bg-[#694AA6]">
+							<a class=" text-[#FCFCFC] py-2 px-5 block">Ajouter</a>
+						</li>
+						<li>
+							<a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='../form/link_acteur.php'>Un acteur à un film</a>
+						</li>	
+						<li>
+							<a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='../form/link-real.php'>Un réalisateurs à un film</a>
+						</li>
+						<li>
+							<a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='../form/link-cat.php'>Une catégories à un film</a>
+						</li>
+					</ul>
+      			</div>
+			</li>
 		</ul>
 	</nav>
 	<div class="navbar-menu relative z-50 hidden">
@@ -88,47 +82,13 @@ $result_user = $pdo->query($sql_user);
 								<li class="">
 									<a class="bg-[#694AA6] text-[#FCFCFC] py-2 px-5 block">Genre</a>
 								</li>
-								<?php 
-									echo "<li>";
-									foreach ($categories as $categorie) {
-										echo "<li><a class='bg-[#FCFCFC] hover:bg-gray-100 py-1 px-4 block' href='page-film.php?id=" . $categorie['id_categories'] . "'>" . $categorie['nom_categories'] . "</a></li>";
-									}
-									echo "</li>";
-								?>
+								
 							</ul>
 						</div>
 					</li>
 					<li class="">
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="contact.php">Contact</a>
 					</li>
-					<?php 
-                    if(!isset($_SESSION["user"])){
-						echo
-					'<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="connexion.php">Connexion</a>
-					</li>
-					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="inscription.php">Inscription</a>
-					</li>';
-					}
-					else 
-					{
-						echo '<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="profil.php">Profil</a>
-					</li>
-					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="traitement/logout.php">Deconnexion</a>
-					</li>';
-					}
-					?>
-					<?php
-					if (isset($_SESSION["id_role"])) {
-					if($_SESSION["id_role"] != 1){ ?>
-					<li class="hidden"><a class="hidden" href="">Admin</a></li>
-					<?php
-					}else { ?>
-						<li><a class="block border-b p-4 text-sm text-[#FCFCFC]" href="form/crud.php">Admin</a></li>
-					<?php } } ?>
 				</ul>
 			</div>
 		</nav>

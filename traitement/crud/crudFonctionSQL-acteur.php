@@ -1,7 +1,17 @@
+<?php 
+session_start();
+if (isset($_SESSION['id_role'])) {
+    if ($_SESSION['id_role'] != 1) {
+        header('location:../index.php');
+    }
+}
+else {
+    header('location:../index.php');
+}
+?>
 <?php
-
 function getDatabaseConnexion() {
-    define('DB_HOST', 'localhost'); 
+    define('DB_HOST', 'localhost');
     define('DB_NAME', 'allosimplon'); 
     define('DB_USER', 'root');
     define('DB_PASS', '');
