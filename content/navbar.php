@@ -7,6 +7,8 @@ $stmt_list->execute();
 $categories = $stmt_list->fetchAll(PDO::FETCH_ASSOC);
 $sql_user = "SELECT id_user, nom_user, prenom_user, email_user, id_role FROM user";
 $result_user = $pdo->query($sql_user);
+var_dump($_SESSION);
+
 ?>
 <nav class="z-50 relative px-3 py-2 md:px-4 md:py-3 flex items-center bg-[#FCFCFC]">
 		<a class="font-bold leading-none" href="index.php">
@@ -49,7 +51,7 @@ $result_user = $pdo->query($sql_user);
 			</li>
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="contact.php">Contact</a></li>
 			<?php 
-			if(!isset($_SESSION["user"])){
+			if(!isset($_SESSION["id_user"])){
 				echo
 			'<li><a class="text-sm text-black hover:text-[#694AA6]" href="inscription.php">Inscription</a></li>
 			<li><a class="text-sm text-black hover:text-[#694AA6]" href="connexion.php">Connexion</a></li>';

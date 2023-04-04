@@ -31,8 +31,6 @@ try {
     $sql = "SELECT * FROM `film`";
     $stmt = $pdo ->prepare($sql);
     $stmt->execute();
-    
-
 ?>
 <div>
     <form method="post">
@@ -70,12 +68,13 @@ try {
     // Récupération des résultats
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // Affichage des résultats
-    foreach ($results as $row) {
-    echo $row['nom_acteur'] . " joue dans " . $row['titre_film'] . "<br>";var_dump($row);
-    echo '<form action="../traitement/crud/suppr_acteur_traitement.php" method="POST"  name="delete_joue">
-    <input type="submit" value="supprimer">
-    </form>';
-    }
-    ?>
+    foreach ($results as $row) { ?>
+        <form method="post"><?php echo $row['nom_acteur'] ?> joue dans <?php echo $row['titre_film'] ?><br></form>
+        <form action="../traitement/crud/suppr_acteur_traitement.php" method="POST"  name="delete_joue">
+            <input type="hidden" name="id_acteur" value="<?php echo $row['id_acteur'] ?>">
+            <input type="hidden" name="id_film" value="<?php echo $row['id_film'] ?>">
+            <input type="submit" value="supprimer">
+        </form>
+    <?php } ?>
 <a href="../form/crud.php">Retour aux films<br></a> 
 </div>

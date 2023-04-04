@@ -18,16 +18,16 @@ try {
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-if(isset($_POST['id_acteur']) && isset($_POST['id_film'])){
-    $id_acteur = $_POST['id_acteur'];
+if(isset($_POST['id_realisateur']) && isset($_POST['id_film'])){
+    $id_realisateur = $_POST['id_realisateur'];
     $id_film = $_POST['id_film'];
 
-    $sql = "DELETE FROM joue WHERE id_acteur = :id_acteur AND id_film = :id_film";
+    $sql = "DELETE FROM fait WHERE id_realisateur = :id_realisateur AND id_film = :id_film";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(array(':id_acteur' => $id_acteur, ':id_film' => $id_film));
+    $stmt->execute(array(':id_realisateur' => $id_realisateur, ':id_film' => $id_film));
 }
 echo 'Liaison supprimé<br>';
-echo '<a href=../../form/link_acteur.php>Retour<br></a>';
+echo '<a href=../../form/link_real.php>Retour<br></a>';
 die;
 ?>
 

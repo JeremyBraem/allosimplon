@@ -15,10 +15,9 @@
 		}
 	}
 ?>
-
-<html>
-<body>
-
+<!DOCTYPE html>
+<html lang="en">
+<body class="bg-[#FCFCFC]">
 	<form action="../traitement/crud/create-update.php" enctype="multipart/form-data" method="POST">
 	<p>
 		<a href="crud.php">Liste des films</a>
@@ -36,9 +35,9 @@
 	        <label for="date_film">date :</label>
 	        <input type="text" id="date_film" name="date_film" value="<?php echo isset($film['date_film']) ? $film['date_film'] : '';  ?>" required></input>
 	    </div>
-	    <div>
-	        <label for="image_film">image :</label>
-	        <input type="file" id='image_film' name='image_film' value="<?php echo isset($film['image_film']) ? $film['image_film'] : '';  ?>" required></input>
+		<div>
+			<label for="image_film">image :</label>
+			<input type="file" id="image_film" name="image_film" accept=".jpg, .jpeg, .png, .webp, .jfif" value="<?php echo isset($film['image_film']) ? $film['image_film'] : ''; ?>">
 		</div>
         <div>
 	        <label for="lien_film">lien :</label>
@@ -64,9 +63,7 @@
 			<button type="submit">Supprimer</button>
 		</div>
 		</p>
-
 	</form>
 	<?php } ?>
-
 </body>
 </html>

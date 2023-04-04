@@ -85,7 +85,10 @@ $resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
                     </a>
                 </div>
                 <div class="flex place-content-around pt-1">
-                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
+                    <form method="post" action="profil.php">
+                        <input type="hidden" name="id_film" value="<?php echo $row['id_film']; ?>">
+                        <button type="submit" name="add_aimer"><img src="asset/img/unlike.png" class="h-5 md:w-5"></button>
+                    </form>
                 </div>
             </div>
             <?php endforeach ?>
