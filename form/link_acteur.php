@@ -33,6 +33,8 @@ try {
     $stmt->execute();
 ?>
 <div>
+<a href="../form/crud.php">Retour aux films<br></a> 
+
     <form method="post">
     <select name='select_acteur' form='form_acteur'>
     <?php
@@ -76,5 +78,4 @@ try {
             <input type="submit" value="supprimer">
         </form>
     <?php } ?>
-<a href="../form/crud.php">Retour aux films<br></a> 
 </div>

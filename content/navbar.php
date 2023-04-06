@@ -7,8 +7,6 @@ $stmt_list->execute();
 $categories = $stmt_list->fetchAll(PDO::FETCH_ASSOC);
 $sql_user = "SELECT id_user, nom_user, prenom_user, email_user, id_role FROM user";
 $result_user = $pdo->query($sql_user);
-var_dump($_SESSION);
-
 ?>
 <nav class="z-50 relative px-3 py-2 md:px-4 md:py-3 flex items-center bg-[#FCFCFC]">
 		<a class="font-bold leading-none" href="index.php">
@@ -103,34 +101,26 @@ var_dump($_SESSION);
 					<li class="">
 						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="contact.php">Contact</a>
 					</li>
-					<?php 
-                    if(!isset($_SESSION["user"])){
-						echo
-					'<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="connexion.php">Connexion</a>
-					</li>
-					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="inscription.php">Inscription</a>
-					</li>';
-					}
-					else 
-					{
-						echo '<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="profil.php">Profil</a>
-					</li>
-					<li class="">
-						<a class="block border-b p-4 text-sm text-[#FCFCFC]" href="traitement/logout.php">Deconnexion</a>
-					</li>';
-					}
-					?>
-					<?php
-					if (isset($_SESSION["id_role"])) {
-					if($_SESSION["id_role"] != 1){ ?>
-					<li class="hidden"><a class="hidden" href="">Admin</a></li>
-					<?php
-					}else { ?>
-						<li><a class="block border-b p-4 text-sm text-[#FCFCFC]" href="form/crud.php">Admin</a></li>
-					<?php } } ?>
+			<?php 
+			if(!isset($_SESSION["id_user"])){
+				echo
+			'<li><a class="block border-b p-4 text-sm text-[#FCFCFC]" href="inscription.php">Inscription</a></li>
+			<li><a class="block border-b p-4 text-sm text-[#FCFCFC]" href="connexion.php">Connexion</a></li>';
+			} 
+			else 
+			{ ?>
+				<li><a class="block border-b p-4 text-sm text-[#FCFCFC]" href="profil.php"><?php echo $_SESSION['prenom_user']; ?></a></li>
+				<li><a class="block border-b p-4 text-sm text-[#FCFCFC]" href="traitement/logout.php">Deconnexion</a></li>
+			<?php }
+			?>
+			<?php
+			if (isset($_SESSION["id_role"])) {
+			if($_SESSION["id_role"] != 1){ ?>
+			<li class="hidden"><a class="hidden block border-b p-4 text-sm text-[#FCFCFC]" href="contact.php">Admin</a></li>
+			<?php
+			}else { ?>
+				<li><a class="text-sm block border-b p-4 text-sm text-[#FCFCFC]" href="form/crud.php">Admin</a></li>
+			<?php } } ?>
 				</ul>
 			</div>
 		</nav>

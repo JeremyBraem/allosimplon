@@ -28,7 +28,7 @@ try {
         $stmt->bindParam(2,$_POST['select_film']);
         $stmt->execute();
         echo "realisateur ajouté au film";
-        echo '<a href=../../form/crud.php>Retour<br></a>';
+        echo '<a href=../../form/link_real.php>Retour<br></a>';
         }
     else {
         echo "realisateur déjà ajouté au film";

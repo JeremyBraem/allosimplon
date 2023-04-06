@@ -13,12 +13,6 @@
     <title>AlloSimplon</title>
 </head>
 <body>
-    <?php
-        include ('../traitement/crud/crudFonctionSQL.php');
-        include ('../traitement/crud/crudFonctionTable.php');
-        $rows = getAllFilms();
-        afficherTable($rows, getHeaderTable());
-    ?>
     <a href=form-film.php?id=0 >Ajouter un film<br></a>
     <a href=crud-real.php>Voir réalisateurs<br></a> 
     <a href=crud-acteur.php>Voir acteur<br></a>
@@ -27,5 +21,11 @@
     <a href=link_real.php>Ajouter un réalisateur à un film<br></a>
     <a href=link_cat.php>Ajouter une categorie à un film<br></a>
     <a href=../index.php>Retour au site<br></a>
+    <?php
+        include ('../traitement/crud/crudFonctionSQL.php');
+        include ('../traitement/crud/crudFonctionTable.php');
+        $rows = getAllFilms();
+        afficherTable($rows, getHeaderTable());
+    ?>
 </body>
 </html>

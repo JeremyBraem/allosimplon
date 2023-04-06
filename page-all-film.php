@@ -58,7 +58,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="mb-4">
                 <div class="bg-[#8666C6] rounded-sm overflow-hidden">
                     <a href="<?php echo "film.php?id=" . $film['id_film'] . "'>" . $film['titre_film']; ?>">
-                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-xl text-white"><?php echo $film['titre_film']; ?></h3>
+                        <h3 class="text-['10px'] text-center p-2 md:p-4 text-sm md:text-xl text-white"><?php echo $film['titre_film']; ?></h3>
                         <img src="asset/img/affiche/<?php echo $film['image_film'];?>" class="rounded-b h-44 md:h-96">
                     </a>
                 </div>

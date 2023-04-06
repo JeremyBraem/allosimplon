@@ -80,14 +80,21 @@ $resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
             <div class="mb-4">
                 <div class="bg-[#8666C6] rounded-sm overflow-hidden h-56 md:h-[440px] w-full md:w-76">
                     <a href="<?php echo "film.php?id=" . $row['id_film'] . "'>" . $row['titre_film']; ?>">
-                        <h3 class="text-xl text-center py-2 md:p-4 md:text-xl text-white"><?php echo $row['titre_film']; ?></h3>
-                        <img src="asset/img/affiche/<?php echo $row['image_film']; ?>" class="rounded-b w-full md:h-96">
+                        <h3 class="text-['10px'] text-center py-2 md:p-4 md:text-xl text-white"><?php echo $row['titre_film']; ?></h3>
+                        <img src="asset/img/affiche/<?php echo $row['image_film']; ?>" class="rounded-b w-full h-full md:h-96">
                     </a>
                 </div>
+                <?php if (!isset($_SESSION['id_user'])) { ?>
                 <div class="flex place-content-around pt-1">
+                            <a href="connexion.php"><img src="asset/img/unlike.png" class="h-5 md:w-5"></button></a>
+                            <?php }else { ?>
+                                <div class="flex place-content-around pt-1">
                     <form method="post" action="profil.php">
                         <input type="hidden" name="id_film" value="<?php echo $row['id_film']; ?>">
-                        <button type="submit" name="add_aimer"><img src="asset/img/unlike.png" class="h-5 md:w-5"></button>
+                        <button type="submit" name="add_aimer">
+                            <img src="asset/img/unlike.png" class="h-5 md:w-5"></button>
+                            <?php } ?>
+
                     </form>
                 </div>
             </div>
@@ -101,12 +108,11 @@ $resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
                 <div class="mx-auto overflow-x-hidden overflow-y-hidden">    
                     <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
                     <?php foreach ($results_slide as $row_slide): ?>
-
-                        <div class="flex flex-shrink-0 flex-col relative w-60 md:w-64">
+                        <div class="flex flex-shrink-0 flex-col relative w-60 h-80 md:w-64 md:h-[440px]">
                             <a href="<?php echo "film.php?id=" . $row_slide['id_film'] . "'>" . $row_slide['titre_film']; ?>">
                                 <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center"><?php echo $row_slide['titre_film']; ?></h2>
                                 <div class="">
-                                    <img src="asset/img/affiche/<?php echo $row_slide['image_film']; ?>" class="rounded-b w-full md:h-96">
+                                    <img src="asset/img/affiche/<?php echo $row_slide['image_film']; ?>" class="rounded-b h-full w-full md:h-96">
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">

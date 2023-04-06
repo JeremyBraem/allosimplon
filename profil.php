@@ -44,6 +44,7 @@ $query = "SELECT film.* FROM aime JOIN film ON aime.id_film = film.id_film WHERE
 $stmt = $pdo->prepare($query);
 $stmt->execute(['id_user' => $id_user]);
 $aimed_film = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$_SESSION['favoris'] = $aimed_film;
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +111,7 @@ $aimed_film = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 place-items-center mt-10 md:mt-20 md:gap-x-6 gap-x-3 px-10 md:px-20">
         <?php foreach ($aimed_film as $aimed_film): ?>
             <div class="mb-4">
-                <div class="bg-[#8666C6] rounded-sm overflow-hidden h-56 md:h-[440px] w-full md:w-64">
+                <div class="bg-[#8666C6] rounded-sm overflow-hidden h-52 md:h-[440px] w-full md:w-64">
                     <a href="<?php echo "film.php?id=" . $aimed_film['id_film'] . "'>" . $aimed_film['titre_film']; ?>">
                         <h3 class="text-xl text-center py-2 md:p-4 md:text-xl text-white"><?php echo $aimed_film['titre_film']; ?></h3>
                         <img src="asset/img/affiche/<?php echo $aimed_film['image_film']; ?>" class="rounded-b w-full md:h-96">

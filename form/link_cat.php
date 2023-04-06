@@ -33,7 +33,7 @@ $sql = "SELECT * FROM `film`";
 $stmt = $pdo ->prepare($sql);
 $stmt->execute();
 ?>
-
+<a href="../form/crud.php">Retour aux films<br></a>
 <div>
 <form method="post">
 <select name='select_categories' form='form_categories'>
@@ -78,5 +78,4 @@ foreach ($results as $row) { ?>
         <input type="submit" value="supprimer">
     </form>
 <?php } ?>
-<a href="../form/crud.php">Retour aux films<br></a> 
 </div>
