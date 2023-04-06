@@ -27,20 +27,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
             if (!$utilisateur) {
                 // Redirection vers la page de login avec un message d'erreur
-                $message = 'Utilisateur incorrect';
+                $message = 'Utilisateur ou mot de passe incorrect';
                 echo $message;
                 exit();
             } else {
                 // Vérification du mot de passe
                 if (password_verify($password, $utilisateur["mdp_user"])) {
                     // Création de la session utilisateur
-                    $_SESSION["user"] = $utilisateur["prenom_user"];
+                    $_SESSION["id_user"] = $utilisateur["id_user"];
+                    $_SESSION["email_user"] = $utilisateur["email_user"];
+                    $_SESSION["nom_user"] = $utilisateur["nom_user"];
+                    $_SESSION["prenom_user"] = $utilisateur["prenom_user"];
+                    $_SESSION["id_role"] = $utilisateur["id_role"];
                     // Redirection vers la page d'accueil
                     header("location:../index.php");
                     exit();
                 } else {
                     // Redirection vers la page de login avec un message d'erreur
-                    $message = 'MDP incorrect';
+                    $message = 'Utilisateur ou mot de passe incorrect';
                     echo $message;
                     exit();
                 }

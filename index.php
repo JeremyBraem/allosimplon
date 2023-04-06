@@ -4,13 +4,19 @@ session_start();
 require_once ('content/bdd.php');
 
 // Requête SQL pour sélectionner tous les films
-$sql = "SELECT * FROM film";
+$sql = "SELECT * FROM film ORDER BY id_film DESC LIMIT 0,4";
+$sql_slide = "SELECT * FROM film ORDER BY id_film DESC LIMIT 0,10";
+$sqlCat = "SELECT * FROM categories";
 
 // Exécution de la requête
 $stmt = $pdo->query($sql);
+$stmt_slide = $pdo->query($sql_slide);
+$stmtCat = $pdo->query($sqlCat);
 
 // Récupération des résultats
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$results_slide = $stmt_slide->fetchAll(PDO::FETCH_ASSOC);
+$resultsCat = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,10 +27,13 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="asset/style/reset.css" rel="stylesheet">
     <link href="asset/style/font.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="shortcut icon" href="asset/img/AlloSimplonTR.png"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+    <link rel="shortcut icon" href="asset/img/AlloSimplonFav.png"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
     <title>AlloSimplon</title>
@@ -65,19 +74,28 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <!-- Contenu -->
     <section>
-        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">à la une</h2>    
-        <div class="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-10 md:mt-20 md:gap-x-6 gap-x-3 px-10 md:px-20">
+        <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">à la une</h2>
+        <div class="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-10 md:mt-20 md:gap-x-6 gap-x-3 px-5 md:px-10">
             <?php foreach ($results as $row): ?>
             <div class="mb-4">
-                <div class="bg-[#8666C6] rounded-sm overflow-hidden">
+                <div class="bg-[#8666C6] rounded-sm overflow-hidden h-56 md:h-[440px] w-full md:w-76">
                     <a href="<?php echo "film.php?id=" . $row['id_film'] . "'>" . $row['titre_film']; ?>">
-                        <h3 class="text-xl text-center p-2 md:p-4 text-sm md:text-xl text-white"><?php echo $row['titre_film']; ?></h3>
-                        <img src="asset/img/<?php echo $row['image_film'];?>" class="rounded-b">
+                        <h3 class="text-['10px'] text-center py-2 md:p-4 md:text-xl text-white"><?php echo $row['titre_film']; ?></h3>
+                        <img src="asset/img/affiche/<?php echo $row['image_film']; ?>" class="rounded-b w-full h-full md:h-96">
                     </a>
                 </div>
+                <?php if (!isset($_SESSION['id_user'])) { ?>
                 <div class="flex place-content-around pt-1">
-                    <p>De : Todd Phillips</p>
-                    <img src="asset/img/unlike.png" class="h-5 md:w-5">
+                            <a href="connexion.php"><img src="asset/img/unlike.png" class="h-5 md:w-5"></button></a>
+                            <?php }else { ?>
+                                <div class="flex place-content-around pt-1">
+                    <form method="post" action="profil.php">
+                        <input type="hidden" name="id_film" value="<?php echo $row['id_film']; ?>">
+                        <button type="submit" name="add_aimer">
+                            <img src="asset/img/unlike.png" class="h-5 md:w-5"></button>
+                            <?php } ?>
+
+                    </form>
                 </div>
             </div>
             <?php endforeach ?>
@@ -87,142 +105,21 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2 class="bg-[#FCFCFC] text-center uppercase bold text-[#8666C6] text-2xl font-semibold py-6 md:py-8">TOP 10</h2>
         <div class="flex items-center justify-center">
             <div class="w-full relative flex items-center justify-center px-10 md:px-16">
-                <div class="mx-auto overflow-x-hidden overflow-y-hidden">
+                <div class="mx-auto overflow-x-hidden overflow-y-hidden">    
                     <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
+                    <?php foreach ($results_slide as $row_slide): ?>
+                        <div class="flex flex-shrink-0 flex-col relative w-60 h-80 md:w-64 md:h-[440px]">
+                            <a href="<?php echo "film.php?id=" . $row_slide['id_film'] . "'>" . $row_slide['titre_film']; ?>">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center"><?php echo $row_slide['titre_film']; ?></h2>
                                 <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
+                                    <img src="asset/img/affiche/<?php echo $row_slide['image_film']; ?>" class="rounded-b h-full w-full md:h-96">
                                 </div>
                             </a>
                             <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
                                 <img src="asset/img/unlike.png" class="h-5 md:w-5">
                             </div>
                         </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        </div>
-                        <div class="flex flex-shrink-0 flex-col relative w-full sm:w-auto">
-                            <a href="#">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white bg-[#8666C6] p-4 text-center">JOKER</h2>
-                                <div class="">
-                                    <img src="asset/img/affiche-film-joker.jpg" alt="" class="object-cover object-center w-72" />
-                                </div>
-                            </a>
-                            <div class="flex place-content-around pt-1">
-                                <p>De : Todd Phillips</p>
-                                <img src="asset/img/unlike.png" class="h-5 md:w-5">
-                            </div>                        
-                        </div>
+                        <?php endforeach ?>
                     </div>
                 </div>
             </div>
@@ -239,8 +136,42 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </section>
     <section>
-        <img class="thumbnail-1 my-10" src="asset/img/parallax-1.png" alt="image">
+        <img class="thumbnail-1 md:my-10" src="asset/img/parallax-1.png" alt="image">
         <img class="thumbnail-2 my-10" src="asset/img/parallax-2.png" alt="image">
+    </section>
+    <section class="px-10 bg-[#8666C6] md:hidden pb-10">
+        <h2 class=" text-center uppercase text-white text-2xl pt-10">Catégories</h2>
+        <swiper-container class="mySwiper" slides-per-view="1" space-between="30">
+        <?php foreach ($resultsCat as $rowCat): ?>
+            <swiper-slide >
+                <div class="mb-4 my-8">
+                    <div class="bg-[#FCFCFC] rounded-sm overflow-hidden h-44 w-60">
+                        <a href="<?php echo "page-film.php?id=" . $rowCat['id_categories'] . "'>" . $rowCat['nom_categories']; ?>">
+                            <h3 class="text-xl text-center py-2 md:p-4 md:text-xl text-black"><?php echo $rowCat['nom_categories']; ?></h3>
+                            <img src="asset/img/categorie/<?php echo $rowCat['image_categories']; ?>" class="rounded-sm-b">
+                        </a>
+                    </div>
+                </div>
+            </swiper-slide>
+            <?php endforeach ?>
+        </swiper-container>
+    </section>
+    <section class="hidden md:block px-10 bg-[#8666C6]">
+        <h2 class=" text-center uppercase text-white text-2xl pt-10">Catégories</h2>
+        <swiper-container class="mySwiper p-10" slides-per-view="4"  space-between="30">
+        <?php foreach ($resultsCat as $rowCat): ?>
+            <swiper-slide >
+                <div class="mb-4 w-fit">
+                    <div class="bg-[#FCFCFC] rounded-sm overflow-hidden h-44 md:h-52 md:w-60">
+                        <a href="<?php echo "page-film.php?id=" . $rowCat['id_categories'] . "'>" . $rowCat['nom_categories']; ?>">
+                            <h3 class="text-xl text-center py-2 md:p-4 md:text-xl text-black"><?php echo $rowCat['nom_categories']; ?></h3>
+                            <img src="asset/img/categorie/<?php echo $rowCat['image_categories']; ?>" class="rounded-sm-b w-full h-full">
+                        </a>
+                    </div>
+                </div>
+            </swiper-slide>
+            <?php endforeach ?>
+        </swiper-container>
     </section>
     <?php
         include ('content/footer.php');

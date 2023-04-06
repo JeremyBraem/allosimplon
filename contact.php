@@ -1,6 +1,7 @@
 <?php
-session_start()
+session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@ session_start()
     <link href="asset/style/reset.css" rel="stylesheet">
     <link href="asset/style/font.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="shortcut icon" href=""/>
+    <link rel="shortcut icon" href="asset/img/AlloSimplonFav.png"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro&display=swap" rel="stylesheet">
@@ -25,15 +26,15 @@ session_start()
     ?>
     <section>
         <h2 class="bg-[#8666C6] text-center uppercase text-white text-2xl p-9">Contact</h2>
-        <form class=" lg:w-2/4 m-auto flex flex-col p-10">
+        <form class=" lg:w-2/4 m-auto flex flex-col p-10" method="POST" action="traitement/traitementContact.php">
             <label class="mb-2 text-xl">E-mail :</label>
-            <input class="border border-black p-1 bg-white rounded" type="email" name="email" required>
+            <input class="border border-black p-1 bg-white rounded" type="text" name="email" required>
             <label class="mb-2 mt-7 text-xl">Nom :</label>
-            <input class="border border-black p-1 bg-white rounded" type="name" name="name" required>
+            <input class="border border-black p-1 bg-white rounded" type="text" name="name" required>
             <label class="mb-2 mt-7 text-xl">Prénom :</label>
-            <input class="border border-black p-1 bg-white rounded" type="firstname" name="firstname" required>
+            <input class="border border-black p-1 bg-white rounded" type="text" name="firstname" required>
             <label class="mb-2 mt-7 text-xl">Message :</label>
-            <input type="textarea" name="Message" class="p-1 bg-white rounded border border-black pb-24 md:pb-36 xl:pb-64">
+            <input type="textarea" name="message" class="p-1 bg-white rounded border border-black pb-24 md:pb-36 xl:pb-64">
             <button class="place-self-center mt-8 bg-[#8666C6] text-[#FCFCFC] px-10 py-3 text-xl rounded">Envoyer</button>
         </form>
         <div class="bg-[#8666C6] text-white p-9">
